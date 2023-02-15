@@ -342,7 +342,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 33543498}
   m_LocalRotation: {x: 0.3868809, y: -0.59188104, z: 0.386881, w: 0.59188104}
-  m_LocalPosition: {x: 4.0129256, y: 9.1595, z: -0.00000011920933}
+  m_LocalPosition: {x: 4.0129256, y: 9.1595, z: -0.00000023841864}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -758,7 +758,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   m_LocalRotation: {x: 0.3868809, y: -0.59188104, z: 0.386881, w: 0.59188104}
-  m_LocalPosition: {x: 4.0129256, y: 9.1595, z: -0.00000011920933}
+  m_LocalPosition: {x: 4.0129256, y: 9.1595, z: -0.00000023841864}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1168,7 +1168,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572764302}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.72, y: 1.81, z: -58.3}
+  m_LocalPosition: {x: -21.85, y: 0.09, z: -27.54}
   m_LocalScale: {x: 11.235924, y: 0.06706014, z: 11.235924}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1729,7 +1729,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943386696}
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.01, y: 3.07, z: 19.31}
+  m_LocalPosition: {x: 0.01, y: 2.47, z: 20.72}
   m_LocalScale: {x: 4.178603, y: 0.06706014, z: 4.0712094}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1817,7 +1817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1045156154
 Transform:
   m_ObjectHideFlags: 0
@@ -1922,14 +1922,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1131793218}
-  m_LocalRotation: {x: -0.17540398, y: 0.68500614, z: -0.17540398, w: 0.68500626}
-  m_LocalPosition: {x: -0, y: 1.27, z: 14.06}
+  m_LocalRotation: {x: -0.122787856, y: 0.6963643, z: -0.122787856, w: 0.6963643}
+  m_LocalPosition: {x: -0, y: 1.21, z: 15.163}
   m_LocalScale: {x: 7.4038825, y: 0.06706014, z: 4.0712094}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 700091451}
   m_RootOrder: 20
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -28.725}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -20}
 --- !u!65 &1131793220
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2108,7 +2108,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1219167332
 Transform:
   m_ObjectHideFlags: 0
@@ -2593,7 +2593,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1721396252}
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -14.9, y: 6.22, z: 9.58}
+  m_LocalPosition: {x: -15.64, y: 4.98, z: 10.96}
   m_LocalScale: {x: 23.665106, y: 0.06706014, z: 13.630816}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3350,14 +3350,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2019057328}
-  m_LocalRotation: {x: -0, y: -0, z: -0.22625136, w: 0.974069}
-  m_LocalPosition: {x: -4.99, y: 4.59, z: 19.31}
+  m_LocalRotation: {x: 0, y: 0, z: -0.17364825, w: 0.9848078}
+  m_LocalPosition: {x: -5.502, y: 3.723, z: 20.74}
   m_LocalScale: {x: 7.4038825, y: 0.06706014, z: 4.0712094}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 700091451}
   m_RootOrder: 21
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -26.153}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -20}
 --- !u!65 &2019057330
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3428,11 +3428,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 867394520}
     m_Modifications:
-    - target: {fileID: 3715410986388389318, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7103621085813769041, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
         type: 3}
       propertyPath: m_Name

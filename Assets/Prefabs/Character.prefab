@@ -2139,9 +2139,9 @@ Rigidbody:
   m_GameObject: {fileID: 7103621085813769041}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.6
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -2153,7 +2153,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7103621085813769041}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: e4b8cd4ffb2dd8f4ebcefe1818bd204f, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.30039403
@@ -2172,15 +2172,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1ba53030b37144fa09aca1b0e769de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
-  jumpPower: 7
-  jumpMovementFactor: 0.33
-  movementVector: {x: 0, y: 0}
-  hasJumpInput: 0
-  isGrounded: 0
   thisRigidbody: {fileID: 0}
-  thisCollider: {fileID: 0}
   thisAnimator: {fileID: 0}
+  movementSpeed: 30
+  maxSpeed: 6
+  movementVector: {x: 0, y: 0}
+  jumpPower: 10
+  jumpMovementFactor: 0.33
+  hasJumpInput: 0
+  maxSplopeAngle: 45
+  isGrounded: 0
+  isOnSlope: 0
+  slopeNormal: {x: 0, y: 0, z: 0}
+  attackStages: 3
+  attackStageDurations:
+  - 0.3
+  - 0.3
+  - 1.5
+  attackStageMaxIntervals:
+  - 0.25
+  - 0.25
 --- !u!1 &7123665115438267288
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,31 +1,38 @@
 using UnityEngine;
 
-public class Dead : State {
+public class Dead : State
+{
 
     private PlayerController controller;
-    
-    public Dead(PlayerController controller) : base("Dead") {
+
+    public Dead(PlayerController controller) : base("Dead")
+    {
         this.controller = controller;
     }
 
-    public override void Enter() {
+    public override void Enter()
+    {
         base.Enter();
         controller.thisAnimator.SetTrigger("tGameOver");
     }
 
-    public override void Exit() {
+    public override void Exit()
+    {
         base.Exit();
     }
 
-    public override void Update() {
+    public override void Update()
+    {
         base.Update();
     }
 
-    public override void LateUpdate() {
+    public override void LateUpdate()
+    {
         base.LateUpdate();
     }
 
-    public override void FixedUpdate() {
+    public override void FixedUpdate()
+    {
         base.FixedUpdate();
     }
 

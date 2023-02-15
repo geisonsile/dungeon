@@ -4,46 +4,47 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour 
 {
-
-    // Public Properties
-    public float movementSpeed = 10;
-    public float jumpPower = 10;
-    public float jumpMovementFactor = 1f;
-
     // State Machine
     [HideInInspector] public StateMachine stateMachine;
     [HideInInspector] public Idle idleState;
     [HideInInspector] public Walking walkingState;
     [HideInInspector] public Jump jumpState;
+    [HideInInspector] public Attack attackState;
     [HideInInspector] public Dead deadState;
 
-    // Internal Properties
-    [HideInInspector] public Vector2 movementVector;
-    [HideInInspector] public bool hasJumpInput;
-
-    
-
+    // Components
     [HideInInspector] public Rigidbody thisRigidbody;
-    [HideInInspector] public Collider thisCollider;
     [HideInInspector] public Animator thisAnimator;
 
-    //Slope
+    [Header("Movement")]
+    public float movementSpeed = 10;
+    public float maxSpeed = 10;
+    [HideInInspector] public Vector2 movementVector;
+
+    [Header("Jump")]
+    public float jumpPower = 10;
+    public float jumpMovementFactor = 1f;
+    [HideInInspector] public bool hasJumpInput;
+
     [Header("Slope")]
     public float maxSplopeAngle = 45;
     [HideInInspector] public bool isGrounded;
     [HideInInspector] public bool isOnSlope;
     [HideInInspector] public Vector3 slopeNormal;
-    
+
+    [Header("Attack")]
+    public int attackStages;
+    public List<float>attackStageDurations;
+    public List<float> attackStageMaxIntervals;
 
 
     void Awake() 
     {
         thisRigidbody = GetComponent<Rigidbody>();
-        thisCollider = GetComponent<Collider>();
         thisAnimator = GetComponent<Animator>();
     }
 
-    // Start is called before the first frame update
+    
     void Start() 
     {
         // StateMachine and its states
@@ -51,11 +52,11 @@ public class PlayerController : MonoBehaviour
         idleState = new Idle(this);
         walkingState = new Walking(this);
         jumpState = new Jump(this);
+        attackState = new Attack(this);
         deadState = new Dead(this);
         stateMachine.ChangeState(idleState);
     }
-
-    // Update is called once per frame
+    
     void Update() 
     {
         // Create input vector
@@ -70,13 +71,15 @@ public class PlayerController : MonoBehaviour
 
         // Update Animator
         float velocity = thisRigidbody.velocity.magnitude;
-        float velocityRate = velocity / movementSpeed;
+        float velocityRate = velocity / maxSpeed;
         thisAnimator.SetFloat("fVelocity", velocityRate);
 
 
         // Physic Updates
         DetectGround();
         DetectSlope();
+
+       
 
         // StateMachine
         stateMachine.Update();
@@ -93,6 +96,8 @@ public class PlayerController : MonoBehaviour
         //Apply gravity
         Vector3 gravityForce = Physics.gravity * (isOnSlope ? 0.25f : 1f);
         thisRigidbody.AddForce(gravityForce, ForceMode.Acceleration);
+
+        LimitSpeed();
 
         // StateMachine
         stateMachine.FixedUpdate();
@@ -115,10 +120,27 @@ public class PlayerController : MonoBehaviour
         Quaternion q1 = Quaternion.LookRotation(inputVector, Vector3.up);
         Quaternion q2 = Quaternion.Euler(0, camera.transform.eulerAngles.y, 0);
         Quaternion toRotation = q1 * q2;
-        Quaternion newRotation = Quaternion.LerpUnclamped(transform.rotation, toRotation, 0.15f);
+        Quaternion newRotation = Quaternion.LerpUnclamped(transform.rotation, toRotation, 0.2f);
 
         // Apply rotation
         thisRigidbody.MoveRotation(newRotation);
+    }
+
+    public bool AttemptToAttack()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            var isAttacking = stateMachine.currentStateName == attackState.name;
+            var canAttack = !isAttacking || attackState.CanSwitchStages();
+            if (canAttack)
+            {
+                var attackStage = isAttacking ? (attackState.stage + 1) : 1;
+                attackState.stage = attackStage;
+                stateMachine.ChangeState(attackState);
+                return true;
+            }
+        }
+        return false;
     }
 
     private void DetectGround() 
@@ -154,6 +176,16 @@ public class PlayerController : MonoBehaviour
             float angle = Vector3.Angle(Vector3.up, slopeHitInfo.normal);
             isOnSlope = angle < maxSplopeAngle && angle != 0;
             slopeNormal = isOnSlope ? slopeHitInfo.normal : Vector3.zero;
+        }
+    }
+
+    private void LimitSpeed()
+    {
+        Vector3 flatVelocity = new Vector3(thisRigidbody.velocity.x, 0, thisRigidbody.velocity.z);
+        if(flatVelocity.magnitude > maxSpeed)
+        {
+            Vector3 limitedVelocity = flatVelocity.normalized * maxSpeed;
+            thisRigidbody.velocity = new Vector3(limitedVelocity.x, thisRigidbody.velocity.y, limitedVelocity.z);
         }
     }
 }
