@@ -30,6 +30,13 @@ public class Walking : State
             return;
         }
 
+        //Switch to Defense
+        if (controller.hasDefenseInput)
+        {
+            controller.stateMachine.ChangeState(controller.defendState);
+            return;
+        }
+
         // Switch to Jump
         if (controller.hasJumpInput) 
         {

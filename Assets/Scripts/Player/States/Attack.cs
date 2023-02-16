@@ -7,6 +7,7 @@ public class Attack : State
 
     public int stage = 1;
     private float stateTime;
+    private bool firstFixedUpdate;
 
     
     public Attack(PlayerController controller) : base("Attack") 
@@ -25,12 +26,18 @@ public class Attack : State
         }
 
         stateTime = 0;
+        firstFixedUpdate = true;
+
         controller.thisAnimator.SetTrigger("tAttack" + stage);
+
+        controller.swordHitbox.SetActive(true);
     }
 
     public override void Exit() 
     {
         base.Exit();
+        controller.swordHitbox.SetActive(false);
+
     }
 
     public override void Update() 
@@ -61,6 +68,18 @@ public class Attack : State
     public override void FixedUpdate() 
     {
         base.FixedUpdate();
+
+        if(firstFixedUpdate)
+        {
+            firstFixedUpdate = false;
+
+            controller.RotateBodyToFaceInput(1);
+
+            var inpulseValue = controller.attackStageImpulses[stage - 1];
+            var inpulseVector = controller.thisRigidbody.rotation * Vector3.forward;
+            inpulseVector *= inpulseValue;
+            controller.thisRigidbody.AddForce(inpulseVector, ForceMode.Impulse);
+        }
     }
 
     public bool CanSwitchStages()

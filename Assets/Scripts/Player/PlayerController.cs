@@ -5,12 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour 
 {
     // State Machine
-    [HideInInspector] public StateMachine stateMachine;
-    [HideInInspector] public Idle idleState;
-    [HideInInspector] public Walking walkingState;
-    [HideInInspector] public Jump jumpState;
-    [HideInInspector] public Attack attackState;
-    [HideInInspector] public Dead deadState;
+    public StateMachine stateMachine;
+    public Idle idleState;
+    public Walking walkingState;
+    public Jump jumpState;
+    public Attack attackState;
+    public Defend defendState;
+    public Dead deadState;
 
     // Components
     [HideInInspector] public Rigidbody thisRigidbody;
@@ -36,6 +37,15 @@ public class PlayerController : MonoBehaviour
     public int attackStages;
     public List<float>attackStageDurations;
     public List<float> attackStageMaxIntervals;
+    public List<float> attackStageImpulses;
+    public GameObject swordHitbox;
+    public float swordKnockBackImpulse = 10;
+
+    [Header("Defend")]
+    public GameObject shieldHitbox;
+    public float shieldKnockBackImpulse = 10;
+    [HideInInspector] public bool hasDefenseInput;
+
 
 
     void Awake() 
@@ -53,8 +63,12 @@ public class PlayerController : MonoBehaviour
         walkingState = new Walking(this);
         jumpState = new Jump(this);
         attackState = new Attack(this);
+        defendState = new Defend(this);
         deadState = new Dead(this);
         stateMachine.ChangeState(idleState);
+
+        swordHitbox.SetActive(false);
+        shieldHitbox.SetActive(false);
     }
     
     void Update() 
@@ -68,6 +82,8 @@ public class PlayerController : MonoBehaviour
         float inputY = isUp ? 1 : isDown ? -1 : 0;
         movementVector = new Vector2(inputX, inputY);
         hasJumpInput = Input.GetKey(KeyCode.Space);
+
+        hasDefenseInput = Input.GetMouseButton(1);
 
         // Update Animator
         float velocity = thisRigidbody.velocity.magnitude;
@@ -103,6 +119,35 @@ public class PlayerController : MonoBehaviour
         stateMachine.FixedUpdate();
     }
 
+    public void OnSwordCollisionEnter(Collider other)
+    {
+        var otherObject = other.gameObject;
+        var otherRigidbody = otherObject.GetComponent<Rigidbody>();
+        var isTarget = otherObject.layer == LayerMask.NameToLayer("Target");
+        
+        if(isTarget && otherRigidbody != null)
+        {
+            var positionDiff = otherObject.transform.position - gameObject.transform.position;
+            var impulseVector = new Vector3(positionDiff.normalized.x, 0, positionDiff.normalized.z);
+            impulseVector *= swordKnockBackImpulse;
+            otherRigidbody.AddForce(impulseVector, ForceMode.Impulse);
+        }
+    }
+
+    public void OnShieldCollisionEnter(Collider other)
+    {
+        var otherObject = other.gameObject;
+        var otherRigidbody = otherObject.GetComponent<Rigidbody>();
+        var isTarget = true;
+        if (isTarget && otherRigidbody != null)
+        {
+            var positionDiff = otherObject.transform.position - gameObject.transform.position;
+            var impulseVector = new Vector3(positionDiff.normalized.x, 0, positionDiff.normalized.z);
+            impulseVector *= shieldKnockBackImpulse;
+            otherRigidbody.AddForce(impulseVector, ForceMode.Impulse);
+        }
+    }
+
     public Quaternion GetForward() 
     {
         Camera camera = Camera.main;
@@ -110,7 +155,7 @@ public class PlayerController : MonoBehaviour
         return Quaternion.Euler(0, eulerY, 0);
     }
 
-    public void RotateBodyToFaceInput() 
+    public void RotateBodyToFaceInput(float alpha = 0.225f) 
     {
         if(movementVector.IsZero()) return;
 
@@ -120,7 +165,7 @@ public class PlayerController : MonoBehaviour
         Quaternion q1 = Quaternion.LookRotation(inputVector, Vector3.up);
         Quaternion q2 = Quaternion.Euler(0, camera.transform.eulerAngles.y, 0);
         Quaternion toRotation = q1 * q2;
-        Quaternion newRotation = Quaternion.LerpUnclamped(transform.rotation, toRotation, 0.2f);
+        Quaternion newRotation = Quaternion.LerpUnclamped(transform.rotation, toRotation, alpha);
 
         // Apply rotation
         thisRigidbody.MoveRotation(newRotation);
@@ -142,7 +187,7 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
-
+    
     private void DetectGround() 
     {
         // Reset flag
