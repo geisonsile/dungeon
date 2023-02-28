@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4013409345974138854}
   - component: {fileID: 1177279813268112172}
   - component: {fileID: 941880245524612714}
+  - component: {fileID: 7688988398715641475}
   m_Layer: 0
   m_Name: 99_Enviroment_Column_Rocky_1
   m_TagString: Untagged
@@ -97,3 +98,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2058446, y: 2.9395177, z: 1.1960163}
   m_Center: {x: 0, y: 1.463447, z: -0.0049141347}
+--- !u!208 &7688988398715641475
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816969783768130297}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.60300004, y: 1.47, z: 0.59800005}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.463, z: -0.0050000004}
+  m_TimeToStationary: 0.5

@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     //API
     [Header("Physics")]
     [SerializeField] public LayerMask groundLayer;
+    public GameObject player;
 
 
     void Awake() 

@@ -1,3 +1,4 @@
+using EventArgs;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -52,6 +53,17 @@ public class PlayerController : MonoBehaviour
     {
         thisRigidbody = GetComponent<Rigidbody>();
         thisAnimator = GetComponent<Animator>();
+
+        LifeScript lifeScript = GetComponent<LifeScript>();
+        if(lifeScript != null)
+        {
+            lifeScript.OnDamage += OnDamage;
+        }
+    }
+
+    private void OnDamage(object sender, DamageEventArgs args)
+    {
+        Debug.Log("Player recebeu um dano de " + args.damage + " do " + args.attacker.name);
     }
 
     

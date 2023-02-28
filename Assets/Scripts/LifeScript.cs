@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using EventArgs;
+using System;
 using UnityEngine;
 
-public class LifeScript : MonoBehaviour {
-
+public class LifeScript : MonoBehaviour 
+{
+    public event EventHandler<DamageEventArgs> OnDamage;
     public int maxHealth;
     public int health;
 
@@ -11,4 +12,12 @@ public class LifeScript : MonoBehaviour {
         health = maxHealth;
     }
 
+    public void InflictDamage(GameObject attacker, int damage)
+    {
+        health -= damage;
+        OnDamage?.Invoke(this, new DamageEventArgs { 
+            attacker = attacker,
+            damage = damage
+        });
+    }
 }

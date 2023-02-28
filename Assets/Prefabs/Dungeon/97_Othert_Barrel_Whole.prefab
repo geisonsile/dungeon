@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 288219141017312184}
   - component: {fileID: 2601675966969212786}
   - component: {fileID: 100470525126960635}
+  - component: {fileID: 7380771315044355814}
   m_Layer: 0
   m_Name: 97_Othert_Barrel_Whole
   m_TagString: Untagged
@@ -98,3 +99,19 @@ CapsuleCollider:
   m_Height: 1.5706323
   m_Direction: 1
   m_Center: {x: -0.0016389787, y: 0.78554016, z: 0.0088739395}
+--- !u!208 &7380771315044355814
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4547508563046649511}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.846, y: 0.785, z: 0.84200007}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.002, y: 0.786, z: 0.009000001}
+  m_TimeToStationary: 0.5
