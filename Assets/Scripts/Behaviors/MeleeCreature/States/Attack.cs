@@ -24,6 +24,8 @@ namespace Behaviors
 
             attackCoroutine = ScheduleAttack();
             controller.StartCoroutine(attackCoroutine);
+
+            controller.thisAnimator.SetTrigger("tAttack");
         }
 
         public override void Exit()
@@ -70,20 +72,22 @@ namespace Behaviors
             var radius = controller.attackRadius;
             var maxDistance = controller.attackSphereRadius;
 
-            if(Physics.SphereCast(origin, radius, direction, out var hitInfo, maxDistance))
+            //controller.drawSphereAt = origin + direction * radius;
+            var attackPosition = direction * radius + origin;
+            var layerMask = LayerMask.GetMask("Player");
+            Collider[] colliders = Physics.OverlapSphere(attackPosition, maxDistance, layerMask);
+            
+            foreach (var collider in colliders)
             {
-                var hitObject = hitInfo.transform.gameObject;
-
-                if(hitObject.CompareTag("Player"))
+                var hitObject = collider.gameObject;
+                
+                var hitLifeScript = hitObject.GetComponent<LifeScript>();
+                if (hitLifeScript != null)
                 {
-                    var hitLifeScript = hitObject.GetComponent<LifeScript>();
-                    if(hitLifeScript != null)
-                    {
-                        var attacker = controller.gameObject;
-                        var attackDamage = controller.attackDamage;
-                        hitLifeScript.InflictDamage(attacker, attackDamage);
-                    }
-                }
+                    var attacker = controller.gameObject;
+                    var attackDamage = controller.attackDamage;
+                    hitLifeScript.InflictDamage(attacker, attackDamage);
+                }   
             }
         }
     }

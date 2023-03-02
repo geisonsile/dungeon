@@ -1,3 +1,4 @@
+using EventArgs;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,6 +8,8 @@ namespace Behaviors
     {
         [HideInInspector] public MeleeCreatureHelper helper;
         [HideInInspector] public NavMeshAgent thisAgent;
+        [HideInInspector] public Animator thisAnimator;
+        [HideInInspector] public LifeScript thisLife;
 
         [HideInInspector] public StateMachine stateMachine;
         [HideInInspector] public Idle idleState;
@@ -42,11 +45,14 @@ namespace Behaviors
 
         [Header("Debug")]
         public string currentStateName;
+        //public Vector3 drawSphereAt;
 
 
         private void Awake()
         {
             thisAgent = GetComponent<NavMeshAgent>();
+            thisAnimator = GetComponent<Animator>();
+            thisLife = GetComponent<LifeScript>();
 
             helper = new MeleeCreatureHelper(this);
         }
@@ -62,12 +68,23 @@ namespace Behaviors
             DeadState = new Dead(this);
 
             stateMachine.ChangeState(idleState);
+
+            thisLife.OnDamage += OnDamage;
+        }
+
+        private void OnDamage(object sender, DamageEventArgs args)
+        {
+            Debug.Log("Criatura recebeu " + args.damage + " de dano de " + args.attacker.name);
+            stateMachine.ChangeState(hurtState);
         }
 
         private void Update()
         {
             stateMachine.Update();
             currentStateName = stateMachine.currentStateName;
+
+            var velocityRate = thisAgent.velocity.magnitude / thisAgent.speed;
+            thisAnimator.SetFloat("fVelocity", velocityRate);
         }
 
         private void LateUpdate()
@@ -79,6 +96,15 @@ namespace Behaviors
         {
             stateMachine.FixedUpdate();
         }
+
+        /*private void OnDrawGizmos()
+        {
+            if(drawSphereAt != null)
+            {
+                Gizmos.color = Color.magenta;
+                Gizmos.DrawSphere(drawSphereAt, attackSphereRadius);
+            }
+        }*/
     }
 }
 

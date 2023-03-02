@@ -37,7 +37,7 @@ namespace Behaviors
                 return false;
 
             //Error: Found obstacle
-            var layerMask = LayerMask.NameToLayer("Default");
+            var layerMask = LayerMask.GetMask("Default", "Player");
             if(Physics.Raycast(origin, direction,out var hitInfo,searchRadius, layerMask))
             {
                 if (hitInfo.transform.gameObject != player)

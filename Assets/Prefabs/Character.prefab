@@ -2456,9 +2456,10 @@ GameObject:
   - component: {fileID: 3715410986388389318}
   - component: {fileID: 7405022775022263455}
   - component: {fileID: 4032914411754040383}
-  m_Layer: 0
+  - component: {fileID: 5893819066517888124}
+  m_Layer: 10
   m_Name: Character
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2575,6 +2576,20 @@ MonoBehaviour:
   shieldHitbox: {fileID: 1232331276}
   shieldKnockBackImpulse: 10
   hasDefenseInput: 0
+--- !u!114 &5893819066517888124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7103621085813769041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b210a4571baf100458218ca20711c119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  health: 5
 --- !u!1 &7123665115438267288
 GameObject:
   m_ObjectHideFlags: 0

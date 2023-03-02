@@ -13,11 +13,11 @@ TagManager:
   - UI
   - Ground
   - Target
-  - 
+  - Projectile
   - Creatures
+  - Player
   - 
-  - 
-  - 
+  - WorldUI
   - 
   - 
   - 

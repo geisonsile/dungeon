@@ -15,6 +15,10 @@ namespace Behaviors
         public override void Enter()
         {
             base.Enter();
+
+            controller.thisLife.isVulnerable = false;
+
+            controller.thisAnimator.SetTrigger("tDead");
         }
 
         public override void Exit()

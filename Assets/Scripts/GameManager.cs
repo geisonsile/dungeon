@@ -8,9 +8,15 @@ public class GameManager : MonoBehaviour
 
     // Singleton
     public static GameManager Instance {get; private set;}
-    
 
-    //API
+    //Interaction
+    public List<Interaction> interactionList;
+
+    //Rendering
+    [Header("Rendering")]
+    public Camera worldUiCamera;
+
+    //Physics
     [Header("Physics")]
     [SerializeField] public LayerMask groundLayer;
     public GameObject player;

@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     public List<float> attackStageImpulses;
     public GameObject swordHitbox;
     public float swordKnockBackImpulse = 10;
+    public List<int> damageByStage;
 
     [Header("Defend")]
     public GameObject shieldHitbox;
@@ -135,14 +136,28 @@ public class PlayerController : MonoBehaviour
     {
         var otherObject = other.gameObject;
         var otherRigidbody = otherObject.GetComponent<Rigidbody>();
-        var isTarget = otherObject.layer == LayerMask.NameToLayer("Target");
-        
+        var otherLife = otherObject.GetComponent<LifeScript>();
+
+        int bit = 1 << otherObject.layer;
+        int mask = LayerMask.GetMask("Target", "Creatures");
+        bool isBitInMask = (bit & mask) == bit;
+        bool isTarget = isBitInMask; 
+
         if(isTarget && otherRigidbody != null)
         {
-            var positionDiff = otherObject.transform.position - gameObject.transform.position;
-            var impulseVector = new Vector3(positionDiff.normalized.x, 0, positionDiff.normalized.z);
-            impulseVector *= swordKnockBackImpulse;
-            otherRigidbody.AddForce(impulseVector, ForceMode.Impulse);
+            if (otherRigidbody != null)
+            {
+                var positionDiff = otherObject.transform.position - gameObject.transform.position;
+                var impulseVector = new Vector3(positionDiff.normalized.x, 0, positionDiff.normalized.z);
+                impulseVector *= swordKnockBackImpulse;
+                otherRigidbody.AddForce(impulseVector, ForceMode.Impulse);
+            }
+
+            if(otherLife != null)
+            {
+                var damage = damageByStage[attackState.stage -1];
+                otherLife.InflictDamage(gameObject, damage);
+            }
         }
     }
 
