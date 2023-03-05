@@ -25,11 +25,14 @@ public class Interaction : MonoBehaviour
         GameManager.Instance.interactionList.Remove(this);
     }
 
-    void Start()
+    private void Awake()
     {
         widget = Instantiate(widgetPrefab, transform.position + widgetOffset, widgetPrefab.transform.rotation);
         widget.transform.SetParent(gameObject.transform, true);
+    }
 
+    void Start()
+    {
         var worldUiCamera = GameManager.Instance.worldUiCamera;
         var canvas = widget.GetComponent<Canvas>();
         if(canvas != null)
@@ -76,5 +79,11 @@ public class Interaction : MonoBehaviour
     public void Interact()
     {
         OnInteraction?.Invoke(this, new InteractionEventArgs());
+    }
+
+    public void SetActionText(string text)
+    {
+        var interactionWidget = widget.GetComponent<InteractionWidget>();
+        interactionWidget.SetActionText(text);
     }
 }

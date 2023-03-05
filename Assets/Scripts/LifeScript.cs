@@ -10,6 +10,9 @@ public class LifeScript : MonoBehaviour
     public int health;
     public bool isVulnerable = true;
 
+    public GameObject healingPrefab;
+
+
     void Start() {
         health = maxHealth;
     }
@@ -24,6 +27,18 @@ public class LifeScript : MonoBehaviour
                 attacker = attacker,
                 damage = damage
             });
+        }
+    }
+
+    public void Heal()
+    {
+        health = maxHealth;
+
+        if(healingPrefab != null)
+        {
+            var effect = Instantiate(healingPrefab, transform.position, healingPrefab.transform.rotation);
+            effect.transform.SetParent(transform);
+            Destroy(effect, 5);
         }
     }
 

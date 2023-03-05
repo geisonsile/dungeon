@@ -5,21 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour 
 {
-
-    // Singleton
     public static GameManager Instance {get; private set;}
 
-    //Interaction
+    public GameObject player;
     public List<Interaction> interactionList;
-
-    //Rendering
+    
     [Header("Rendering")]
     public Camera worldUiCamera;
-
-    //Physics
+    
     [Header("Physics")]
     [SerializeField] public LayerMask groundLayer;
-    public GameObject player;
+
+    [Header("Inventory")]
+    public int keys;
+    public bool hasBoosKey;
 
 
     void Awake() 
