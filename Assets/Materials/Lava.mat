@@ -96,8 +96,8 @@ Material:
     - _AmbientOcclusion: 0.5
     - _Blend: 0
     - _BumpScale: 1
-    - _CellDensity: 30
-    - _CellSpeed: 0.51
+    - _CellDensity: 5
+    - _CellSpeed: 0.25
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
