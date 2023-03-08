@@ -57,7 +57,7 @@ namespace Behaviors
                 }
             }
 
-            //Attemp to attack
+            //Attempt to attack
             if(helper.GetDistanceToPlayer() <= controller.distanceToAttack)
             {
                 controller.stateMachine.ChangeState(controller.AttackState);

@@ -2,11 +2,11 @@ using EventArgs;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Behaviors
+namespace Behaviors.Boss
 {
-    public class MeleeCreatureController : MonoBehaviour
+    public class BossController : MonoBehaviour
     {
-        [HideInInspector] public MeleeCreatureHelper helper;
+        [HideInInspector] public BossHelper helper;
 
         [HideInInspector] public NavMeshAgent thisAgent;
         [HideInInspector] public Animator thisAnimator;
@@ -15,38 +15,36 @@ namespace Behaviors
         [HideInInspector] public StateMachine stateMachine;
         [HideInInspector] public Idle idleState;
         [HideInInspector] public Follow followState;
-        [HideInInspector] public Attack AttackState;
+        [HideInInspector] public AttackNormal AttackNormalState;
+        [HideInInspector] public AttackRitual AttackRitualState;
+        [HideInInspector] public AttackSuper AttackSuperState;
         [HideInInspector] public Hurt hurtState;
         [HideInInspector] public Dead DeadState;
 
 
 
         [Header("General")]
-        public float searchRadius = 5f;
+        public float lowHealthThreshold = 0.4f;
 
         [Header("Idle")]
-        public float targetSearchInterval = 1f;
+        public float idleDuration = 0.3f;
 
         [Header("Follow")]
         public float ceaseFollowInterval = 4f;
 
         [Header("Attack")]
-        public float distanceToAttack = 1f;
-        public float attackRadius = 1.5f;
-        public float attackSphereRadius = 1.5f;
-        public float damageDelay = 0f;
-        public float attackDuration = 1f;
+        public float distanceToRitual = 2.5f;
+        public float attackNormalMagicDelay = 0f;
+        public float attackSuperMagicDelay = 0f;
+        public float attackSuperMagicDuration = 1f;
+        public int attackSuperMagicCount = 5;
         public int attackDamage = 1;
 
         [Header("Hurt")]
-        public float hurtDuration = 1f;
-
-        [Header("Dead")]
-        public float destroyIfFar = 30f;
+        public float hurtDuration = 0.5f;
 
         [Header("Debug")]
         public string currentStateName;
-        //public Vector3 drawSphereAt;
 
 
         private void Awake()
@@ -55,7 +53,7 @@ namespace Behaviors
             thisAnimator = GetComponent<Animator>();
             thisLife = GetComponent<LifeScript>();
 
-            helper = new MeleeCreatureHelper(this);
+            helper = new BossHelper(this);
         }
 
         private void Start()
@@ -64,7 +62,9 @@ namespace Behaviors
 
             idleState = new Idle(this);
             followState = new Follow(this);
-            AttackState = new Attack(this);
+            AttackNormalState = new AttackNormal(this);
+            AttackRitualState = new AttackRitual(this);
+            AttackSuperState = new AttackSuper(this);
             hurtState = new Hurt(this);
             DeadState = new Dead(this);
 
@@ -75,8 +75,8 @@ namespace Behaviors
 
         private void OnDamage(object sender, DamageEventArgs args)
         {
-            Debug.Log("Criatura recebeu " + args.damage + " de dano de " + args.attacker.name);
-            stateMachine.ChangeState(hurtState);
+            Debug.Log("Boss recebeu " + args.damage + " de dano de " + args.attacker.name);
+            //stateMachine.ChangeState(hurtState);
         }
 
         private void Update()
@@ -84,8 +84,8 @@ namespace Behaviors
             stateMachine.Update();
             currentStateName = stateMachine.currentStateName;
 
-            var velocityRate = thisAgent.velocity.magnitude / thisAgent.speed;
-            thisAnimator.SetFloat("fVelocity", velocityRate);
+            //var velocityRate = thisAgent.velocity.magnitude / thisAgent.speed;
+            //thisAnimator.SetFloat("fVelocity", velocityRate);
         }
 
         private void LateUpdate()
@@ -97,15 +97,6 @@ namespace Behaviors
         {
             stateMachine.FixedUpdate();
         }
-
-        /*private void OnDrawGizmos()
-        {
-            if(drawSphereAt != null)
-            {
-                Gizmos.color = Color.magenta;
-                Gizmos.DrawSphere(drawSphereAt, attackSphereRadius);
-            }
-        }*/
     }
 }
 
