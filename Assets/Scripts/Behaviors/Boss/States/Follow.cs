@@ -23,14 +23,17 @@ namespace Behaviors.Boss
         {
             base.Enter();
 
-            attackAttemptCooldown = 0;
+            attackAttemptCooldown = attackAttemptInterval;
             targetUpdateCooldown = 0;
-            ceaseFollowCooldown = 0;
+            ceaseFollowCooldown = controller.ceaseFollowInterval;
         }
 
         public override void Exit()
         {
             base.Exit();
+
+            //Stop following
+            controller.thisAgent.ResetPath();
         }
 
         public override void Update()

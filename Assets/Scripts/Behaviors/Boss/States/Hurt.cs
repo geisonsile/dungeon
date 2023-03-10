@@ -16,6 +16,8 @@ namespace Behaviors.Boss
         public override void Enter()
         {
             base.Enter();
+
+            controller.thisAnimator.SetTrigger("tHurt");
         }
 
         public override void Exit()

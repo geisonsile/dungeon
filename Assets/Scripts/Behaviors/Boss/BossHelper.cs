@@ -30,5 +30,20 @@ namespace Behaviors.Boss
             var lifeRate = (float) life.health / (float) life.maxHealth;
             return lifeRate <= controller.lowHealthThreshold;
         }
+
+        public void StartStateCoroutine(IEnumerator enumerator)
+        {
+            controller.StartCoroutine(enumerator);
+            controller.stateCoroutines.Add(enumerator);
+        }
+
+        public void ClearStateCoroutines()
+        {
+            foreach (var enumerator in controller.stateCoroutines)
+            {
+                controller.StopCoroutine(enumerator);
+            }
+            controller.stateCoroutines.Clear();
+        }
     }
 }

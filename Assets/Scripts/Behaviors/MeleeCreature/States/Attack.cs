@@ -42,6 +42,7 @@ namespace Behaviors
         {
             base.Update();
 
+            //End Attack
             if ((endAttackCooldown -= Time.deltaTime) <= 0)
             {
                 controller.stateMachine.ChangeState(controller.idleState);
