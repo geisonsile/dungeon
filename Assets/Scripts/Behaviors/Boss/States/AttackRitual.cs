@@ -61,7 +61,18 @@ namespace Behaviors.Boss
         {
             yield return new WaitForSeconds(delay);
 
-            Debug.Log("Atacou com " + this.name);
+            var gameObject = Object.Instantiate(
+                controller.ritualPrefab, 
+                controller.staffBottom.position, 
+                controller.ritualPrefab.transform.rotation
+            );
+            Object.Destroy(gameObject, 6);
+
+            if(helper.GetDistanceToPlayer() <= controller.distanceToRitual)
+            {
+                var playerLife = GameManager.Instance.player.GetComponent<LifeScript>();
+                playerLife.InflictDamage(controller.gameObject, controller.attackDamage);
+            }
         }
     }
 }

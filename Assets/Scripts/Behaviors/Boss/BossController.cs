@@ -38,16 +38,19 @@ namespace Behaviors.Boss
 
         [Header("Attack")]
         public int attackDamage = 1;
+        public Vector3 aimOffset = new Vector3(0, 1.4f, 0);
 
         [Header("Attack Normal")]
         public float attackNormalMagicDelay = 0f;
         public float attackNormalDuration = 0f;
+        public float attackNormalImpulse = 10;
 
         [Header("Attack Super")]
         public float attackSuperMagicDelay = 0f;
         public float attackSuperDuration = 0f;
         public float attackSuperMagicDuration = 1f;
         public int attackSuperMagicCount = 5;
+        public float attackSuperImpulse = 10;
 
         [Header("Attack Ritual")]
         public float distanceToRitual = 2.5f;

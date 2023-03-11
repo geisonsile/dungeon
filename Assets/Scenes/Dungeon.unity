@@ -55905,42 +55905,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 867394520}
     m_Modifications:
-    - target: {fileID: 4032914411754040383, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
-        type: 3}
-      propertyPath: swordKnockBackImpulse
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4032914411754040383, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
-        type: 3}
-      propertyPath: damageByStage.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4032914411754040383, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
-        type: 3}
-      propertyPath: damageByStage.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4032914411754040383, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
-        type: 3}
-      propertyPath: damageByStage.Array.data[1]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4032914411754040383, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
-        type: 3}
-      propertyPath: damageByStage.Array.data[2]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4032914411754040383, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
-        type: 3}
-      propertyPath: attackStageDurations.Array.data[2]
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5893819066517888124, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
-        type: 3}
-      propertyPath: healingPrefab
-      value: 
-      objectReference: {fileID: 2771264987947768934, guid: 372e535c046973845b7724de8e7f4f5a,
-        type: 3}
     - target: {fileID: 7103621085813769041, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
         type: 3}
       propertyPath: m_Name
@@ -56432,18 +56396,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 517916424713347185}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7993593774808168864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 400642833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3fe77050b772db4aae1cad0ddb36856, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8606398210402093919
 PrefabInstance:
   m_ObjectHideFlags: 0

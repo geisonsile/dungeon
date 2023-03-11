@@ -66,7 +66,20 @@ namespace Behaviors.Boss
         {
             yield return new WaitForSeconds(delay);
 
-            Debug.Log("Atacou com " + this.name);
+            var staffTop = controller.staffTop;
+
+            var projectile = Object.Instantiate(controller.energyballPrefab, staffTop.position, staffTop.rotation);
+
+            var player = GameManager.Instance.player;
+            var projectileRigidBody = projectile.GetComponent<Rigidbody>();
+
+            var vectorToPlayer = (player.transform.position + controller.aimOffset - staffTop.position).normalized;
+            var forceVector = staffTop.rotation * Vector3.forward;
+            forceVector = new Vector3(forceVector.x, vectorToPlayer.y, forceVector.z);
+            forceVector *= controller.attackSuperImpulse;
+            projectileRigidBody.AddForce(forceVector, ForceMode.Impulse);
+
+            Object.Destroy(projectile, 30);
         }
     }
 }

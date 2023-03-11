@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153196033124628893}
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -0.9, y: 152.1, z: 0.4}
+  m_LocalPosition: {x: 0.3, y: 125.7, z: 0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -747,7 +747,7 @@ Transform:
   m_GameObject: {fileID: 7127939216801993646}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -81.50409, y: 8.4, z: 53.46141}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7133352203674772046}
@@ -815,11 +815,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.2
-  m_Speed: 4
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 300
-  m_StoppingDistance: 0
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -862,19 +862,22 @@ MonoBehaviour:
   lowHealthThreshold: 0.4
   staffTop: {fileID: 1600445434481612540}
   staffBottom: {fileID: 4328434526351664499}
-  idleDuration: 1
-  ceaseFollowInterval: 5
+  idleDuration: 0.5
+  ceaseFollowInterval: 2.5
   attackDamage: 1
+  aimOffset: {x: 0, y: 1.4, z: 0}
   attackNormalMagicDelay: 0.66
   attackNormalDuration: 1.2
+  attackNormalImpulse: 10
   attackSuperMagicDelay: 0.66
   attackSuperDuration: 2
   attackSuperMagicDuration: 1.33
-  attackSuperMagicCount: 5
-  distanceToRitual: 2.5
+  attackSuperMagicCount: 6
+  attackSuperImpulse: 15
+  distanceToRitual: 3.5
   attackRitualDelay: 0.66
-  attackRitualDuration: 3
-  hurtDuration: 1
+  attackRitualDuration: 1.5
+  hurtDuration: 0.5
   fireballPrefab: {fileID: 306655317168196088, guid: b720ebddd94845842813b58ac245cd52,
     type: 3}
   energyballPrefab: {fileID: 8338892674941718912, guid: bc3206e2178a9634990e0bb6f9944cbf,
