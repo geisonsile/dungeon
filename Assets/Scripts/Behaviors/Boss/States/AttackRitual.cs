@@ -21,7 +21,6 @@ namespace Behaviors.Boss
             base.Enter();
 
             endAttackCooldown = controller.attackRitualDuration;
-            Debug.Log("Entrou no " + this.name);
 
             controller.thisAnimator.SetTrigger("tAttackRitual");
 
