@@ -17,6 +17,8 @@ namespace Behaviors.Boss
         {
             base.Enter();
 
+            controller.thisLife.isVulnerable = false;
+
             controller.thisAnimator.SetTrigger("tDead");
         }
 

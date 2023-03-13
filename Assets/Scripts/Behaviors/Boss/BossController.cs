@@ -101,7 +101,7 @@ namespace Behaviors.Boss
         private void OnDamage(object sender, DamageEventArgs args)
         {
             Debug.Log("Boss recebeu " + args.damage + " de dano de " + args.attacker.name);
-            //stateMachine.ChangeState(hurtState);
+            stateMachine.ChangeState(hurtState);
         }
 
         private void Update()
@@ -111,6 +111,16 @@ namespace Behaviors.Boss
 
             var velocityRate = thisAgent.velocity.magnitude / thisAgent.speed;
             thisAnimator.SetFloat("fVelocity", velocityRate);
+
+            //Face player
+            var player = GameManager.Instance.player;
+            var vecToPlayer = player.transform.position - transform.position;
+            vecToPlayer.y = 0;
+            vecToPlayer.Normalize();
+            var desiredRotation = Quaternion.LookRotation(vecToPlayer);
+            var newRotation = Quaternion.LerpUnclamped(transform.rotation, desiredRotation, 0.2f);
+            transform.rotation = newRotation;
+
         }
 
         private void LateUpdate()

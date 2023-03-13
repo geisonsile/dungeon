@@ -70,6 +70,10 @@ namespace Behaviors.Boss
 
             var projectile = Object.Instantiate(controller.energyballPrefab, staffTop.position, staffTop.rotation);
 
+            var projectileCollision = projectile.GetComponent<ProjectileCollision>();
+            projectileCollision.attacker = controller.gameObject;
+            projectileCollision.damage = controller.attackDamage;
+
             var player = GameManager.Instance.player;
             var projectileRigidBody = projectile.GetComponent<Rigidbody>();
 
