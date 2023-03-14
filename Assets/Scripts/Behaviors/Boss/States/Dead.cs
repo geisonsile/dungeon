@@ -1,3 +1,4 @@
+using EventArgs;
 using UnityEngine;
 
 namespace Behaviors.Boss
@@ -20,6 +21,8 @@ namespace Behaviors.Boss
             controller.thisLife.isVulnerable = false;
 
             controller.thisAnimator.SetTrigger("tDead");
+
+            GlobalEvents.Instance.InvokeGameWon(this, new GameWonArgs());
         }
 
         public override void Exit()

@@ -1,3 +1,4 @@
+using EventArgs;
 using UnityEngine;
 
 public class Dead : State
@@ -14,6 +15,8 @@ public class Dead : State
     {
         base.Enter();
         controller.thisAnimator.SetTrigger("tGameOver");
+
+        GlobalEvents.Instance.InvokeGameOver(this, new GameOverArgs());
     }
 
     public override void Exit()

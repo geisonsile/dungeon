@@ -59,7 +59,13 @@ public class Door : MonoBehaviour
         
         interaction.SetAvailable(false);
         
-        thisAnimator.SetTrigger("tOpen"); 
+        thisAnimator.SetTrigger("tOpen");
+
+        var isBossDoor = requiredKey.itemType == ItemType.BOSSKEY;
+        if(isBossDoor)
+        {
+            GlobalEvents.Instance.InvokeBossDoorOpen(this, new BossDoorOpenArgs());
+        }
     }
     private void CloseDoor()
     {

@@ -260,4 +260,12 @@ public class PlayerController : MonoBehaviour
             thisRigidbody.velocity = new Vector3(limitedVelocity.x, thisRigidbody.velocity.y, limitedVelocity.z);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("BossRoomSensor"))
+        {
+            GlobalEvents.Instance.InvokeBossRoomEnter(this, new BossRoomEnterArgs());
+        }
+    }
 }
