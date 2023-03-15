@@ -184,6 +184,8 @@ MonoBehaviour:
   attackDamage: 1
   hurtDuration: 0.5
   destroyIfFar: 30
+  knockoutEffect: {fileID: 7156241163619126912, guid: 2e759ecf0721ba640a9537985ab62d64,
+    type: 3}
   currentStateName: 
 --- !u!1 &7066594555942712615
 GameObject:

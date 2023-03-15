@@ -23,6 +23,15 @@ namespace Behaviors.MeleeCreature
             controller.thisAnimator.SetTrigger("tDead");
 
             controller.thisCollider.enabled = false;
+
+            // Create knockout effect
+            var knockoutEffect = controller.knockoutEffect;
+            if (knockoutEffect != null)
+            {
+                var position = controller.transform.position;
+                var rotation = knockoutEffect.transform.rotation;
+                Object.Instantiate(knockoutEffect, position, rotation);
+            }
         }
 
         public override void Exit()

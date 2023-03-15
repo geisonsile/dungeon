@@ -45,6 +45,9 @@ namespace Behaviors.MeleeCreature
         [Header("Dead")]
         public float destroyIfFar = 30f;
 
+        [Header("Effects")]
+        public GameObject knockoutEffect;
+
         [Header("Debug")]
         public string currentStateName;
         //public Vector3 drawSphereAt;

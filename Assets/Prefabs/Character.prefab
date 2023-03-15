@@ -2578,6 +2578,7 @@ MonoBehaviour:
   shieldHitbox: {fileID: 1232331276}
   shieldKnockBackImpulse: 10
   hasDefenseInput: 0
+  hitEffect: {fileID: 22301382440764609, guid: cc0ad3dbd28bc184e9951f03827a8425, type: 3}
 --- !u!114 &5893819066517888124
 MonoBehaviour:
   m_ObjectHideFlags: 0

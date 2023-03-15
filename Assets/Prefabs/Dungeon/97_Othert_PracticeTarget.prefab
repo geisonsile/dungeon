@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7191099180472763234}
   - component: {fileID: 928689698698419843}
   - component: {fileID: 5129839281314450953}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 97_Othert_PracticeTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace BossBattle
 {
-    public class Finished : State
+    public class BossVictorious : State
     {
-        public Finished() : base("Finished") { }
+        public BossVictorious() : base("BossVictorious") { }
         public override void Enter()
         {
             base.Enter();

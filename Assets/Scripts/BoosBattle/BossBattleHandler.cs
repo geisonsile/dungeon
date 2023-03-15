@@ -7,7 +7,8 @@ namespace BossBattle
         public Waiting stateWaiting;
         public Intro stateIntro;
         public Battle stateBattle;
-        public Finished stateFinished;
+        public BossDefeated stateDefeated;
+        public BossVictorious stateVictorious;
 
         public BossBattleHandler()
         {
@@ -16,7 +17,8 @@ namespace BossBattle
             stateWaiting = new Waiting();
             stateIntro = new Intro();
             stateBattle = new Battle();
-            stateFinished = new Finished();
+            stateDefeated = new BossDefeated();
+            stateVictorious = new BossVictorious();
 
             stateMachine.ChangeState(stateDisabled);
 
@@ -25,8 +27,8 @@ namespace BossBattle
             var globalEvents = GlobalEvents.Instance;
             globalEvents.OnBossDoorOpen += (sender, args) => stateMachine.ChangeState(stateWaiting);
             globalEvents.OnBossRoomEnter += (sender, args) => stateMachine.ChangeState(stateIntro);
-            globalEvents.OnGameOver += (sender, args) => stateMachine.ChangeState(stateFinished);
-            globalEvents.OnGameWon += (sender, args) => stateMachine.ChangeState(stateFinished);
+            globalEvents.OnGameOver += (sender, args) => stateMachine.ChangeState(stateVictorious);
+            globalEvents.OnGameWon += (sender, args) => stateMachine.ChangeState(stateDefeated);
         }
 
         public void Update()

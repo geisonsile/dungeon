@@ -49,6 +49,9 @@ namespace Player
         public float shieldKnockBackImpulse = 10;
         [HideInInspector] public bool hasDefenseInput;
 
+        [Header("Effects")]
+        public GameObject hitEffect;
+
 
         void Awake()
         {
@@ -142,6 +145,7 @@ namespace Player
             var otherObject = other.gameObject;
             var otherRigidbody = otherObject.GetComponent<Rigidbody>();
             var otherLife = otherObject.GetComponent<LifeScript>();
+            var otherCollider = otherObject.GetComponent<Collider>();
 
             int bit = 1 << otherObject.layer;
             int mask = LayerMask.GetMask("Target", "Creatures");
@@ -150,6 +154,7 @@ namespace Player
 
             if (isTarget && otherRigidbody != null)
             {
+                //Knockback
                 if (otherRigidbody != null)
                 {
                     var positionDiff = otherObject.transform.position - gameObject.transform.position;
@@ -157,11 +162,18 @@ namespace Player
                     impulseVector *= swordKnockBackImpulse;
                     otherRigidbody.AddForce(impulseVector, ForceMode.Impulse);
                 }
-
+                //Life
                 if (otherLife != null)
                 {
                     var damage = damageByStage[attackState.stage - 1];
                     otherLife.InflictDamage(gameObject, damage);
+                }
+                //Hit effect
+                if (hitEffect != null)
+                {
+                    var hitPosition = otherCollider.ClosestPointOnBounds(swordHitbox.transform.position);
+                    var hitRotation = hitEffect.transform.rotation;
+                    Instantiate(hitEffect, hitPosition, hitRotation);
                 }
             }
         }

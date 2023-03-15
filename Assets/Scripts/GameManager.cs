@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject boss;
     public GameObject bossBattleParts;
     public BossBattleHandler bossBattleHandler;
+    public GameObject bossDeathSequence;
 
 
     void Awake() 
