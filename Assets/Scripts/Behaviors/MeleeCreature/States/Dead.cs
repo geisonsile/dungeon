@@ -1,4 +1,6 @@
-namespace Behaviors
+using UnityEngine;
+
+namespace Behaviors.MeleeCreature
 {
     public class Dead : State
     {
@@ -19,6 +21,8 @@ namespace Behaviors
             controller.thisLife.isVulnerable = false;
 
             controller.thisAnimator.SetTrigger("tDead");
+
+            controller.thisCollider.enabled = false;
         }
 
         public override void Exit()
@@ -29,6 +33,13 @@ namespace Behaviors
         public override void Update()
         {
             base.Update();
+
+            //Delete if far away from player
+            var distanceToPlayer = helper.GetDistanceToPlayer();
+            if(distanceToPlayer >= controller.destroyIfFar)
+            {
+                Object.Destroy(controller.gameObject);
+            }
         }
 
         public override void LateUpdate()

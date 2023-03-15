@@ -2,7 +2,7 @@ using EventArgs;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Behaviors
+namespace Behaviors.MeleeCreature
 {
     public class MeleeCreatureController : MonoBehaviour
     {
@@ -11,6 +11,7 @@ namespace Behaviors
         [HideInInspector] public NavMeshAgent thisAgent;
         [HideInInspector] public Animator thisAnimator;
         [HideInInspector] public LifeScript thisLife;
+        [HideInInspector] public Collider thisCollider;
 
         [HideInInspector] public StateMachine stateMachine;
         [HideInInspector] public Idle idleState;
@@ -54,6 +55,7 @@ namespace Behaviors
             thisAgent = GetComponent<NavMeshAgent>();
             thisAnimator = GetComponent<Animator>();
             thisLife = GetComponent<LifeScript>();
+            thisCollider = GetComponent<Collider>();
 
             helper = new MeleeCreatureHelper(this);
         }

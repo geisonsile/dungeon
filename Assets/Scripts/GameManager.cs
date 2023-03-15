@@ -1,7 +1,6 @@
-using System.Collections;
+using BossBattle;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour 
 {
@@ -20,14 +19,28 @@ public class GameManager : MonoBehaviour
     public int keys;
     public bool hasBoosKey;
 
+    [Header("Boss")]
+    public GameObject boss;
+    public GameObject bossBattleParts;
+    public BossBattleHandler bossBattleHandler;
+
 
     void Awake() 
     {
         // Singleton
-        if(Instance != null && Instance != this) {
+        if(Instance != null && Instance != this)
             Destroy(this);
-        } else {
-            Instance = this;
-        }
+        else
+            Instance = this; 
+    }
+
+    void Start()
+    {
+        bossBattleHandler = new BossBattleHandler();
+    }
+
+    void Update()
+    {
+        bossBattleHandler.Update();    
     }
 }

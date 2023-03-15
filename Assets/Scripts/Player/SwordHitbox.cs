@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class SwordHitbox : MonoBehaviour
+namespace Player
 {
-    public PlayerController playerController;
-    
-
-    private void OnTriggerEnter(Collider other)
+    public class SwordHitbox : MonoBehaviour
     {
-        playerController.OnSwordCollisionEnter(other);
+        public PlayerController playerController;
+
+
+        private void OnTriggerEnter(Collider other)
+        {
+            playerController.OnSwordCollisionEnter(other);
+        }
     }
 }

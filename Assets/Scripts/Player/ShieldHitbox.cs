@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public class ShieldHitbox : MonoBehaviour
+namespace Player
 {
-    public PlayerController playerController;
-
-    private void OnTriggerEnter(Collider other)
+    public class ShieldHitbox : MonoBehaviour
     {
-        playerController.OnShieldCollisionEnter(other);
+        public PlayerController playerController;
+
+        private void OnTriggerEnter(Collider other)
+        {
+            playerController.OnShieldCollisionEnter(other);
+        }
     }
 }

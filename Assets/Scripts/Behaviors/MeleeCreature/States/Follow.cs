@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Behaviors
+namespace Behaviors.MeleeCreature
 {
     public class Follow : State
     {

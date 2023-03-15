@@ -106,7 +106,12 @@ namespace Behaviors.Boss
 
         private void Update()
         {
-            stateMachine.Update();
+            var bossBattleHandler = GameManager.Instance.bossBattleHandler;
+            if (bossBattleHandler.IsActive())
+            {
+                stateMachine.Update();
+            }
+
             currentStateName = stateMachine.currentStateName;
 
             var velocityRate = thisAgent.velocity.magnitude / thisAgent.speed;

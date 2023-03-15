@@ -1,11 +1,14 @@
 using EventArgs;
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Chest : MonoBehaviour
 {
     public Interaction interaction;
     public GameObject itemHolder;
     public Item item;
+    public ChestOpenEvent onOpen = new();
 
     private Animator thisAnimator;
 
@@ -51,5 +54,9 @@ public class Chest : MonoBehaviour
             var playerLife = player.GetComponent<LifeScript>();
             playerLife.Heal();
         }
+
+        onOpen?.Invoke(gameObject);
     }
 }
+
+[Serializable] public class ChestOpenEvent : UnityEvent<GameObject> { }

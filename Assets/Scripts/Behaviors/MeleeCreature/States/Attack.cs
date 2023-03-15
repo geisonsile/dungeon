@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Behaviors
+namespace Behaviors.MeleeCreature
 {
     public class Attack : State
     {
@@ -41,6 +41,9 @@ namespace Behaviors
         public override void Update()
         {
             base.Update();
+
+            //Face Player
+            helper.FacePlayer();
 
             //End Attack
             if ((endAttackCooldown -= Time.deltaTime) <= 0)

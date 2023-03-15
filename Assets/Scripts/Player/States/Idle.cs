@@ -1,65 +1,69 @@
-using UnityEngine;
-
-public class Idle : State
+namespace Player
 {
-
-    private PlayerController controller;
-
-    public Idle(PlayerController controller) : base("Idle")
+    public class Idle : State
     {
-        this.controller = controller;
-    }
 
-    public override void Enter()
-    {
-        base.Enter();
-    }
+        private PlayerController controller;
 
-    public override void Exit()
-    {
-        base.Exit();
-    }
-
-    public override void Update()
-    {
-        base.Update();
-
-        //Switch to Attack
-        if(controller.AttemptToAttack())
+        public Idle(PlayerController controller) : base("Idle")
         {
-            return;
+            this.controller = controller;
         }
 
-        //Switch to Defense
-        if (controller.hasDefenseInput)
+        public override void Enter()
         {
-            controller.stateMachine.ChangeState(controller.defendState);
-            return;
+            base.Enter();
         }
 
-        // Switch to Jump
-        if (controller.hasJumpInput)
+        public override void Exit()
         {
-            controller.stateMachine.ChangeState(controller.jumpState);
-            return;
+            base.Exit();
         }
 
-        // Switch to Walking
-        if (!controller.movementVector.IsZero())
+        public override void Update()
         {
-            controller.stateMachine.ChangeState(controller.walkingState);
-            return;
+            base.Update();
+
+            var bossBattleHandler = GameManager.Instance.bossBattleHandler;
+            var isInCutScene = bossBattleHandler.IsInCutScene();
+            if (isInCutScene) return;
+
+            //Switch to Attack
+            if (controller.AttemptToAttack())
+            {
+                return;
+            }
+
+            //Switch to Defense
+            if (controller.hasDefenseInput)
+            {
+                controller.stateMachine.ChangeState(controller.defendState);
+                return;
+            }
+
+            // Switch to Jump
+            if (controller.hasJumpInput)
+            {
+                controller.stateMachine.ChangeState(controller.jumpState);
+                return;
+            }
+
+            // Switch to Walking
+            if (!controller.movementVector.IsZero())
+            {
+                controller.stateMachine.ChangeState(controller.walkingState);
+                return;
+            }
+        }
+
+        public override void LateUpdate()
+        {
+            base.LateUpdate();
+        }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
         }
     }
-
-    public override void LateUpdate()
-    {
-        base.LateUpdate();
-    }
-
-    public override void FixedUpdate()
-    {
-        base.FixedUpdate();
-    }
-
 }
