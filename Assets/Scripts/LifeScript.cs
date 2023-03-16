@@ -11,7 +11,10 @@ public class LifeScript : MonoBehaviour
     public bool isVulnerable = true;
 
     public GameObject healingPrefab;
+    public GameObject hitPrefab;
 
+    public delegate bool CanInflictDamageDelegate(GameObject attacker, int damage);
+    public CanInflictDamageDelegate canInflictDamageDelegate;
 
     void Start() {
         health = maxHealth;
@@ -21,12 +24,23 @@ public class LifeScript : MonoBehaviour
     {
         if (isVulnerable)
         {
+            // Can inflict damage?
+            bool? canInflictDamage = canInflictDamageDelegate?.Invoke(attacker, damage);
+            if (canInflictDamage.HasValue && canInflictDamage.Value == false) return;
+
+            // Inflict damage
             health -= damage;
             OnDamage?.Invoke(this, new DamageEventArgs
             {
                 attacker = attacker,
                 damage = damage
             });
+
+            // Create effect
+            if (hitPrefab != null)
+            {
+                Instantiate(hitPrefab, transform.position, hitPrefab.transform.rotation);
+            }
         }
     }
 

@@ -157,6 +157,7 @@ MonoBehaviour:
   health: 5
   isVulnerable: 1
   healingPrefab: {fileID: 0}
+  hitPrefab: {fileID: 0}
 --- !u!114 &895708310690542774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,11 +177,11 @@ MonoBehaviour:
   searchRadius: 10
   targetSearchInterval: 1
   ceaseFollowInterval: 4
-  distanceToAttack: 2
+  distanceToAttack: 1.75
   attackRadius: 1.5
   attackSphereRadius: 1.5
-  damageDelay: 1
-  attackDuration: 3
+  damageDelay: 0.45
+  attackDuration: 2.5
   attackDamage: 1
   hurtDuration: 0.5
   destroyIfFar: 30

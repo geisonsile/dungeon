@@ -25,6 +25,10 @@ namespace Behaviors.MeleeCreature
             controller.thisLife.isVulnerable = false;
 
             controller.thisAnimator.SetTrigger("tHurt");
+
+            // Shift object control from NavMesh to Physics
+            controller.thisAgent.enabled = false;
+            controller.thisRigidbody.isKinematic = false;
         }
 
         public override void Exit()
@@ -32,6 +36,10 @@ namespace Behaviors.MeleeCreature
             base.Exit();
 
             controller.thisLife.isVulnerable = true;
+
+            // Shift object control from Physics back to NavMesh
+            controller.thisAgent.enabled = true;
+            controller.thisRigidbody.isKinematic = true;
         }
 
         public override void Update()

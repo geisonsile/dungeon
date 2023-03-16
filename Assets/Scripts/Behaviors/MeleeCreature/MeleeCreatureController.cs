@@ -12,6 +12,7 @@ namespace Behaviors.MeleeCreature
         [HideInInspector] public Animator thisAnimator;
         [HideInInspector] public LifeScript thisLife;
         [HideInInspector] public Collider thisCollider;
+        [HideInInspector] public Rigidbody thisRigidbody;
 
         [HideInInspector] public StateMachine stateMachine;
         [HideInInspector] public Idle idleState;
@@ -59,6 +60,7 @@ namespace Behaviors.MeleeCreature
             thisAnimator = GetComponent<Animator>();
             thisLife = GetComponent<LifeScript>();
             thisCollider = GetComponent<Collider>();
+            thisRigidbody = GetComponent<Rigidbody>();
 
             helper = new MeleeCreatureHelper(this);
         }

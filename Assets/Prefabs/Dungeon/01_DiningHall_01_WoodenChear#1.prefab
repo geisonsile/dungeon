@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5620601408671048051}
   - component: {fileID: 2038805210553030647}
   - component: {fileID: 832830267882260374}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 01_DiningHall_01_WoodenChear#1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

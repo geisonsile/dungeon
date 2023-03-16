@@ -18,6 +18,7 @@ namespace Player
         // Components
         [HideInInspector] public Rigidbody thisRigidbody;
         [HideInInspector] public Animator thisAnimator;
+        [HideInInspector] public LifeScript thisLife;
 
         [Header("Movement")]
         public float movementSpeed = 10;
@@ -57,11 +58,14 @@ namespace Player
         {
             thisRigidbody = GetComponent<Rigidbody>();
             thisAnimator = GetComponent<Animator>();
+            thisLife = GetComponent<LifeScript>();
 
-            LifeScript lifeScript = GetComponent<LifeScript>();
-            if (lifeScript != null)
+            // Listeners
+            if (thisLife != null)
             {
-                lifeScript.OnDamage += OnDamage;
+                thisLife.OnDamage += OnDamage;
+                //thisLife.OnHeal += OnHeal;
+                thisLife.canInflictDamageDelegate += CanInflictDamage;
             }
         }
 
@@ -154,6 +158,13 @@ namespace Player
 
             if (isTarget && otherRigidbody != null)
             {
+                //Life
+                if (otherLife != null)
+                {
+                    var damage = damageByStage[attackState.stage - 1];
+                    otherLife.InflictDamage(gameObject, damage);
+                }
+
                 //Knockback
                 if (otherRigidbody != null)
                 {
@@ -162,12 +173,7 @@ namespace Player
                     impulseVector *= swordKnockBackImpulse;
                     otherRigidbody.AddForce(impulseVector, ForceMode.Impulse);
                 }
-                //Life
-                if (otherLife != null)
-                {
-                    var damage = damageByStage[attackState.stage - 1];
-                    otherLife.InflictDamage(gameObject, damage);
-                }
+
                 //Hit effect
                 if (hitEffect != null)
                 {
@@ -177,6 +183,11 @@ namespace Player
                 }
             }
         }
+
+        /*public void OnShieldCollisionEnter(Collider other)
+        {
+            OnShieldCollisionEnter(other.gameObject);
+        }*/
 
         public void OnShieldCollisionEnter(Collider other)
         {
@@ -190,6 +201,23 @@ namespace Player
                 impulseVector *= shieldKnockBackImpulse;
                 otherRigidbody.AddForce(impulseVector, ForceMode.Impulse);
             }
+        }
+
+        private bool CanInflictDamage(GameObject attacker, int damage)
+        {
+            var isDefending = stateMachine.currentStateName == defendState.name;
+            if (isDefending)
+            {
+                Vector3 playerDirection = transform.TransformDirection(Vector3.forward);
+                Vector3 attackDirection = (transform.position - attacker.transform.position).normalized;
+                float dot = Vector3.Dot(playerDirection, attackDirection);
+                if (dot < -0.25)
+                {
+                    //OnShieldCollisionEnter(attacker);
+                    return false;
+                }
+            }
+            return true;
         }
 
         public Quaternion GetForward()
