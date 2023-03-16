@@ -25,6 +25,12 @@ public class GameManager : MonoBehaviour
     public BossBattleHandler bossBattleHandler;
     public GameObject bossDeathSequence;
 
+    // Music
+    [Header("Music")]
+    public AudioSource gameplayMusic;
+    public AudioSource bossMusic;
+    public AudioSource ambienceMusic;
+
 
     void Awake() 
     {
@@ -38,6 +44,18 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         bossBattleHandler = new BossBattleHandler();
+
+        // Play music
+        var musicTargetVolume = gameplayMusic.volume;
+        gameplayMusic.volume = 0;
+        gameplayMusic.Play();
+        StartCoroutine(FadeAudioSource.StartFade(gameplayMusic, musicTargetVolume, 1f));
+
+        // Play ambience
+        var ambienceTargetVolume = ambienceMusic.volume;
+        ambienceMusic.volume = 0;
+        ambienceMusic.Play();
+        StartCoroutine(FadeAudioSource.StartFade(ambienceMusic, ambienceTargetVolume, 1f));
     }
 
     void Update()

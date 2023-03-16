@@ -25,6 +25,11 @@ namespace Player
         public float maxSpeed = 10;
         [HideInInspector] public Vector2 movementVector;
 
+        [Header("Footsteps")]
+        public List<AudioClip> footstepSounds;
+        public AudioSource footstepAudioSource;
+        public float footstepInterval = 0.25f;
+
         [Header("Jump")]
         public float jumpPower = 10;
         public float jumpMovementFactor = 1f;

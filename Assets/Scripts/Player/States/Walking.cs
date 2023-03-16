@@ -6,6 +6,7 @@ namespace Player
     {
 
         private PlayerController controller;
+        private float footStepCooldown;
 
         public Walking(PlayerController controller) : base("Walking")
         {
@@ -15,6 +16,8 @@ namespace Player
         public override void Enter()
         {
             base.Enter();
+
+            footStepCooldown = controller.footstepInterval;
         }
 
         public override void Exit()
@@ -51,6 +54,18 @@ namespace Player
             {
                 controller.stateMachine.ChangeState(controller.idleState);
                 return;
+            }
+
+            // Footstep!
+            float velocity = controller.thisRigidbody.velocity.magnitude;
+            float velocityRate = velocity / controller.maxSpeed;
+            footStepCooldown -= Time.deltaTime * velocityRate;
+            if (footStepCooldown <= 0f)
+            {
+                footStepCooldown = controller.footstepInterval;
+                var audioClip = controller.footstepSounds[Random.Range(0, controller.footstepSounds.Count - 1)];
+                var volumeScale = Random.Range(0.8f, 1f);
+                controller.footstepAudioSource.PlayOneShot(audioClip, volumeScale);
             }
         }
 

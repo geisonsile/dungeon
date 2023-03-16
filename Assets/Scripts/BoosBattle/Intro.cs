@@ -15,7 +15,20 @@ namespace BossBattle
 
             timeElapsed = 0;
 
-            GameManager.Instance.bossBattleParts.SetActive(true);
+            // Enable hidden parts
+            var gameManager = GameManager.Instance;
+            gameManager.bossBattleParts.SetActive(true);
+
+            // Stop gameplay music
+            var gameplayMusic = gameManager.gameplayMusic;
+            gameManager.StartCoroutine(FadeAudioSource.StartFade(gameplayMusic, 0, 2f));
+
+            // Play boss music
+            var bossMusic = gameManager.bossMusic;
+            var bossMusicVolume = bossMusic.volume;
+            bossMusic.volume = 0;
+            gameManager.StartCoroutine(FadeAudioSource.StartFade(bossMusic, bossMusicVolume, 0.5f));
+            bossMusic.Play();
         }
 
         public override void Exit()
