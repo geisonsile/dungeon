@@ -56,11 +56,18 @@ public class Door : MonoBehaviour
             else if (requiredKey.itemType == ItemType.BOSSKEY)
                 GameManager.Instance.hasBoosKey = false;
         }
-        
+
+        // Update UI
+        var gameplayUI = GameManager.Instance.gameplayUI;
+        gameplayUI.RemoveObject(requiredKey.itemType);
+
+        // Disabled Interaction
         interaction.SetAvailable(false);
         
+        //Update Animator
         thisAnimator.SetTrigger("tOpen");
 
+        // Boss door
         var isBossDoor = requiredKey.itemType == ItemType.BOSSKEY;
         if(isBossDoor)
         {

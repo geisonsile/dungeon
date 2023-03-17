@@ -13,6 +13,7 @@ namespace Player
         public Jump jumpState;
         public Attack attackState;
         public Defend defendState;
+        public Hurt hurtState;
         public Dead deadState;
 
         // Components
@@ -55,6 +56,12 @@ namespace Player
         public float shieldKnockBackImpulse = 10;
         [HideInInspector] public bool hasDefenseInput;
 
+        // Hurt
+        [Header("Hurt")]
+        public float hurtDuration = 0.2f;
+        public float invulnerabilityDuration = 1f;
+        internal float invulnerabilityTimeLeft;
+
         [Header("Effects")]
         public GameObject hitEffect;
 
@@ -69,17 +76,11 @@ namespace Player
             if (thisLife != null)
             {
                 thisLife.OnDamage += OnDamage;
-                //thisLife.OnHeal += OnHeal;
+                thisLife.OnHeal += OnHeal;
                 thisLife.canInflictDamageDelegate += CanInflictDamage;
             }
         }
-
-        private void OnDamage(object sender, DamageEventArgs args)
-        {
-            Debug.Log("Player recebeu um dano de " + args.damage + " do " + args.attacker.name);
-        }
-
-
+        
         void Start()
         {
             // StateMachine and its states
@@ -89,11 +90,17 @@ namespace Player
             jumpState = new Jump(this);
             attackState = new Attack(this);
             defendState = new Defend(this);
+            hurtState = new Hurt(this);
             deadState = new Dead(this);
             stateMachine.ChangeState(idleState);
 
+            // Toggle hitboxes
             swordHitbox.SetActive(false);
             shieldHitbox.SetActive(false);
+
+            // Update UI
+            var gameplayUI = GameManager.Instance.gameplayUI;
+            gameplayUI.playerHealthBar.SetMaxHealth(thisLife.maxHealth);
         }
 
         void Update()
@@ -147,6 +154,26 @@ namespace Player
 
             // StateMachine
             stateMachine.FixedUpdate();
+        }
+
+        private void OnDamage(object sender, DamageEventArgs args)
+        {
+            // Ignore if game is over
+            //if (GameManager.Instance.isGameOver) return;
+            //if (GameManager.Instance.isGameWon) return;
+
+            // Switch to hurt
+            var gameplayUI = GameManager.Instance.gameplayUI;
+            gameplayUI.playerHealthBar.SetHealth(thisLife.health);
+            Debug.Log("Player recebeu um dano de " + args.damage + " do " + args.attacker.name);
+            //stateMachine.ChangeState(hurtState);
+        }
+
+        private void OnHeal(object sender, HealEventArgs args)
+        {
+            var gameplayUI = GameManager.Instance.gameplayUI;
+            gameplayUI.playerHealthBar.SetHealth(thisLife.health);
+            Debug.Log("Player recebeu uma cura.");
         }
 
         public void OnSwordCollisionEnter(Collider other)

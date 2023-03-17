@@ -8,6 +8,7 @@ public class Chest : MonoBehaviour
     public Interaction interaction;
     public GameObject itemHolder;
     public Item item;
+    public GameObject openEffect;
     public ChestOpenEvent onOpen = new();
 
     private Animator thisAnimator;
@@ -55,7 +56,18 @@ public class Chest : MonoBehaviour
             playerLife.Heal();
         }
 
+        // Call events
         onOpen?.Invoke(gameObject);
+
+        // Update UI
+        var gameplayUI = GameManager.Instance.gameplayUI;
+        gameplayUI.AddObject(itemType);
+
+        // Effect
+        /*if (openEffect != null)
+        {
+            Instantiate(openEffect, transform.position, openEffect.transform.rotation);
+        }*/
     }
 }
 

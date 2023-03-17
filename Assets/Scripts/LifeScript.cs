@@ -5,6 +5,7 @@ using UnityEngine;
 public class LifeScript : MonoBehaviour 
 {
     public event EventHandler<DamageEventArgs> OnDamage;
+    public event EventHandler<HealEventArgs> OnHeal;
 
     public int maxHealth;
     public int health;
@@ -54,6 +55,9 @@ public class LifeScript : MonoBehaviour
             effect.transform.SetParent(transform);
             Destroy(effect, 5);
         }
+
+        // Propagate event
+        OnHeal?.Invoke(this, new HealEventArgs());
     }
 
     public bool IsDead()

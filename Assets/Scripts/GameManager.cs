@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
     public AudioSource bossMusic;
     public AudioSource ambienceMusic;
 
+    [Header("UI")]
+    public GameplayUI gameplayUI;
+
 
     void Awake() 
     {
