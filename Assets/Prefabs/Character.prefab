@@ -2573,26 +2573,27 @@ MonoBehaviour:
   slopeNormal: {x: 0, y: 0, z: 0}
   attackStages: 3
   attackStageDurations:
-  - 0.3
-  - 0.3
-  - 0.7
+  - 0.25
+  - 0.25
+  - 0.4
   attackStageMaxIntervals:
-  - 0.25
-  - 0.25
+  - 0.6
+  - 0.6
+  - 0.2
   attackStageImpulses:
   - 7
   - 10
   - 15
   swordHitbox: {fileID: 1196585096}
   swordKnockBackImpulse: 6
-  damageByStage: 010000000100000002000000
+  damageByStage: 010000000200000003000000
   swordActiveThreshold: 0.5
   shieldHitbox: {fileID: 1232331276}
   shieldKnockbackImpulse: 10
   shieldSelfKnockbackImpulse: 4
   hasDefenseInput: 0
   hurtDuration: 0.2
-  invulnerabilityDuration: 1
+  invulnerabilityDuration: 1.5
   hitEffect: {fileID: 22301382440764609, guid: cc0ad3dbd28bc184e9951f03827a8425, type: 3}
   shieldEffect: {fileID: 3906190638731667273, guid: ebfadc65b85a53448be488c05c9bd171,
     type: 3}
@@ -2616,8 +2617,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b210a4571baf100458218ca20711c119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
-  health: 5
+  maxHealth: 10
+  health: 10
   isVulnerable: 1
   healingPrefab: {fileID: 2771264987947768934, guid: 372e535c046973845b7724de8e7f4f5a,
     type: 3}
