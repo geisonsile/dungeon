@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance {get; private set;}
 
+    [HideInInspector] public bool isGameOver;
+    [HideInInspector] public bool isGameWon;
+
     public GameObject player;
     public List<Interaction> interactionList;
     
@@ -59,6 +62,10 @@ public class GameManager : MonoBehaviour
         ambienceMusic.volume = 0;
         ambienceMusic.Play();
         StartCoroutine(FadeAudioSource.StartFade(ambienceMusic, ambienceTargetVolume, 1f));
+
+        // Listen to OnGameOver
+        GlobalEvents.Instance.OnGameOver += (sender, args) => isGameOver = true;
+        GlobalEvents.Instance.OnGameWon += (sender, args) => isGameWon = true;
     }
 
     void Update()

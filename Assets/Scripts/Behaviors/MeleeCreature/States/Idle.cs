@@ -31,6 +31,10 @@ namespace Behaviors.MeleeCreature
         {
             base.Update();
 
+            // Ignore if game is over or won
+            if (GameManager.Instance.isGameOver) return;
+            if (GameManager.Instance.isGameWon) return;
+
             searchCoolDown -= Time.deltaTime;
             if(searchCoolDown <= 0)
             {

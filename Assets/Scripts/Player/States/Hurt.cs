@@ -22,7 +22,7 @@ namespace Player {
             controller.invulnerabilityTimeLeft = controller.invulnerabilityDuration;
             
             // Break attack chain
-            //controller.currentAttackStage = 1;
+            controller.currentAttackStage = 1;
             
             // Update animator
             controller.thisAnimator.SetTrigger("tHurt");
@@ -34,6 +34,8 @@ namespace Player {
 
         public override void Exit() {
             base.Exit();
+
+            controller.thisLife.isVulnerable = true;
         }
 
         public override void Update() {

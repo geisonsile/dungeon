@@ -506,8 +506,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1374477648}
-  - {fileID: 1178713937}
   - {fileID: 1705206741}
+  - {fileID: 1178713937}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1300,6 +1300,24 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1196585096, guid: e7ba86a98d7ddc046a5bae936a1c3c5b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232331276, guid: e7ba86a98d7ddc046a5bae936a1c3c5b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3482073441311875627, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4558479898696253360, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7103621085813769041, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
         type: 3}
       propertyPath: m_Name
@@ -1313,7 +1331,7 @@ PrefabInstance:
     - target: {fileID: 7628799875007109611, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: -4.11
       objectReference: {fileID: 0}
     - target: {fileID: 7628799875007109611, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
         type: 3}
@@ -1328,17 +1346,17 @@ PrefabInstance:
     - target: {fileID: 7628799875007109611, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: -0.29754135
       objectReference: {fileID: 0}
     - target: {fileID: 7628799875007109611, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7628799875007109611, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1
+      value: -0.95470893
       objectReference: {fileID: 0}
     - target: {fileID: 7628799875007109611, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
         type: 3}
@@ -1353,14 +1371,31 @@ PrefabInstance:
     - target: {fileID: 7628799875007109611, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -180
+      value: -214.62
       objectReference: {fileID: 0}
     - target: {fileID: 7628799875007109611, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7753771187295806992, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950058871270796465, guid: e7ba86a98d7ddc046a5bae936a1c3c5b,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a823f2d919dc55f4ebb9becc42687a78, type: 2}
+    m_RemovedComponents:
+    - {fileID: 7405022775022263455, guid: e7ba86a98d7ddc046a5bae936a1c3c5b, type: 3}
+    - {fileID: 4032914411754040383, guid: e7ba86a98d7ddc046a5bae936a1c3c5b, type: 3}
+    - {fileID: 3715410986388389318, guid: e7ba86a98d7ddc046a5bae936a1c3c5b, type: 3}
+    - {fileID: 5893819066517888124, guid: e7ba86a98d7ddc046a5bae936a1c3c5b, type: 3}
+    - {fileID: 7993593774808168864, guid: e7ba86a98d7ddc046a5bae936a1c3c5b, type: 3}
+    - {fileID: 7993593774808168866, guid: e7ba86a98d7ddc046a5bae936a1c3c5b, type: 3}
+    - {fileID: 7993593774808168859, guid: e7ba86a98d7ddc046a5bae936a1c3c5b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e7ba86a98d7ddc046a5bae936a1c3c5b, type: 3}
 --- !u!1 &1292559145
 GameObject:
@@ -2128,7 +2163,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 0ddaa15f8b810894ba07a1d782e8a8ba, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 475cb041741ce654fb6f267c29d794c7, type: 2}
 --- !u!4 &1945695855
 Transform:
   m_ObjectHideFlags: 0

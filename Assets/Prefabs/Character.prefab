@@ -2586,10 +2586,24 @@ MonoBehaviour:
   swordHitbox: {fileID: 1196585096}
   swordKnockBackImpulse: 6
   damageByStage: 010000000100000002000000
+  swordActiveThreshold: 0.5
   shieldHitbox: {fileID: 1232331276}
-  shieldKnockBackImpulse: 10
+  shieldKnockbackImpulse: 10
+  shieldSelfKnockbackImpulse: 4
   hasDefenseInput: 0
+  hurtDuration: 0.2
+  invulnerabilityDuration: 1
   hitEffect: {fileID: 22301382440764609, guid: cc0ad3dbd28bc184e9951f03827a8425, type: 3}
+  shieldEffect: {fileID: 3906190638731667273, guid: ebfadc65b85a53448be488c05c9bd171,
+    type: 3}
+  attackEffects:
+  - {fileID: 8189048230602037878, guid: ad7fe0b4e4fdb274c8c15bfe100a9cff, type: 3}
+  - {fileID: 8189048230602037878, guid: e060e57ffb716454d90c74e8fe7072cb, type: 3}
+  - {fileID: 8189048230602037878, guid: ffc08bc51b4792d4fa6b2a8de4863ff3, type: 3}
+  jumpEffect: {fileID: 6226440545975013525, guid: 0ae0a162e03a4954380792663089bd5e,
+    type: 3}
+  landEffect: {fileID: 1102692935441874558, guid: 0b4b3507a04fbdd4ea38284f0d4b1ffc,
+    type: 3}
 --- !u!114 &5893819066517888124
 MonoBehaviour:
   m_ObjectHideFlags: 0

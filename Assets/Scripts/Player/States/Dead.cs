@@ -17,6 +17,10 @@ namespace Player
             base.Enter();
             controller.thisAnimator.SetTrigger("tGameOver");
 
+            // Make player invulnerable
+            controller.thisLife.isVulnerable = false;
+
+            // Game over
             GlobalEvents.Instance.InvokeGameOver(this, new GameOverArgs());
         }
 

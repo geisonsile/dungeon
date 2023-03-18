@@ -24,6 +24,15 @@ namespace Player
 
             // Handle animator
             controller.thisAnimator.SetBool("bJumping", true);
+
+            // Break attack chain
+            controller.currentAttackStage = 1;
+
+            // Effect
+            var effect = controller.jumpEffect;
+            var effectPosition = controller.transform.position;
+            var effectRotation = effect.transform.rotation;
+            Object.Instantiate(effect, effectPosition, effectRotation);
         }
 
         public override void Exit()
@@ -32,6 +41,12 @@ namespace Player
 
             // Handle animator
             controller.thisAnimator.SetBool("bJumping", false);
+
+            // Effect
+            var effect = controller.landEffect;
+            var effectPosition = controller.transform.position;
+            var effectRotation = effect.transform.rotation;
+            Object.Instantiate(effect, effectPosition, effectRotation);
         }
 
         public override void Update()

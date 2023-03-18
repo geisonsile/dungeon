@@ -18,6 +18,9 @@ namespace Player
             controller.thisAnimator.SetBool("bDefend", true);
 
             controller.shieldHitbox.SetActive(true);
+
+            // Break attack chain
+            controller.currentAttackStage = 1;
         }
 
         public override void Exit()

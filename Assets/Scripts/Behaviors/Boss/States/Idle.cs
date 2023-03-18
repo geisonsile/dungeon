@@ -32,6 +32,10 @@ namespace Behaviors.Boss
 
             stateTime += Time.deltaTime;
 
+            // Ignore if game is over
+            if (GameManager.Instance.isGameOver) return;
+
+            // Switch to Follow
             if (stateTime >= controller.idleDuration)
             {
                 controller.stateMachine.ChangeState(controller.followState);

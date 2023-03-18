@@ -50,10 +50,14 @@ namespace Player
         public GameObject swordHitbox;
         public float swordKnockBackImpulse = 10;
         public List<int> damageByStage;
+        public float swordActiveThreshold = 0.5f;
+        internal int currentAttackStage = 1;
+        internal float timeLeftToAdvanceAttackStages;
 
         [Header("Defend")]
         public GameObject shieldHitbox;
-        public float shieldKnockBackImpulse = 10;
+        public float shieldKnockbackImpulse = 10;
+        public float shieldSelfKnockbackImpulse = 4;
         [HideInInspector] public bool hasDefenseInput;
 
         // Hurt
@@ -64,6 +68,10 @@ namespace Player
 
         [Header("Effects")]
         public GameObject hitEffect;
+        public GameObject shieldEffect;
+        public List<GameObject> attackEffects;
+        public GameObject jumpEffect;
+        public GameObject landEffect;
 
 
         void Awake()
@@ -127,6 +135,23 @@ namespace Player
             DetectGround();
             DetectSlope();
 
+            // Restore vulnerability
+            var gameManager = GameManager.Instance;
+            if (!gameManager.isGameOver && !gameManager.isGameWon)
+            {
+                if (invulnerabilityTimeLeft > 0 && !thisLife.isVulnerable)
+                {
+                    if ((invulnerabilityTimeLeft -= Time.deltaTime) <= 0f)
+                    {
+                        thisLife.isVulnerable = true;
+                    }
+                }
+            }
+
+            // Update time left to attack
+            timeLeftToAdvanceAttackStages -= Time.deltaTime;
+            if (timeLeftToAdvanceAttackStages <= 0f) currentAttackStage = 1;
+
             // StateMachine
             var bossBattleHandler = GameManager.Instance.bossBattleHandler;
             var isInCutScene = bossBattleHandler.IsInCutScene();
@@ -159,14 +184,12 @@ namespace Player
         private void OnDamage(object sender, DamageEventArgs args)
         {
             // Ignore if game is over
-            //if (GameManager.Instance.isGameOver) return;
-            //if (GameManager.Instance.isGameWon) return;
+            if (GameManager.Instance.isGameOver) return;
+            if (GameManager.Instance.isGameWon) return;
 
             // Switch to hurt
-            var gameplayUI = GameManager.Instance.gameplayUI;
-            gameplayUI.playerHealthBar.SetHealth(thisLife.health);
             Debug.Log("Player recebeu um dano de " + args.damage + " do " + args.attacker.name);
-            //stateMachine.ChangeState(hurtState);
+            stateMachine.ChangeState(hurtState);
         }
 
         private void OnHeal(object sender, HealEventArgs args)
@@ -193,16 +216,18 @@ namespace Player
                 //Life
                 if (otherLife != null)
                 {
-                    var damage = damageByStage[attackState.stage - 1];
+                    var damage = damageByStage[currentAttackStage - 1];
                     otherLife.InflictDamage(gameObject, damage);
                 }
 
                 //Knockback
                 if (otherRigidbody != null)
                 {
+                    var isLastStage = currentAttackStage == attackStages;
+                    var stageFactor = isLastStage ? 1.5f : 1f;
                     var positionDiff = otherObject.transform.position - gameObject.transform.position;
                     var impulseVector = new Vector3(positionDiff.normalized.x, 0, positionDiff.normalized.z);
-                    impulseVector *= swordKnockBackImpulse;
+                    impulseVector *= swordKnockBackImpulse * stageFactor;
                     otherRigidbody.AddForce(impulseVector, ForceMode.Impulse);
                 }
 
@@ -216,22 +241,42 @@ namespace Player
             }
         }
 
-        /*public void OnShieldCollisionEnter(Collider other)
-        {
-            OnShieldCollisionEnter(other.gameObject);
-        }*/
-
         public void OnShieldCollisionEnter(Collider other)
         {
-            var otherObject = other.gameObject;
+            OnShieldCollisionEnter(other.gameObject);
+        }
+
+        public void OnShieldCollisionEnter(GameObject otherObject)
+        {
+            // If our shield has hit an eligible object...
             var otherRigidbody = otherObject.GetComponent<Rigidbody>();
-            var isTarget = true;
-            if (isTarget && otherRigidbody != null)
-            {
+            var layerMask = LayerMask.GetMask("Creatures", "Projectile");
+            var isEligible = layerMask == (layerMask | (1 << otherObject.layer));
+            if (isEligible)
+            { 
+                // Calculate knockback
                 var positionDiff = otherObject.transform.position - gameObject.transform.position;
-                var impulseVector = new Vector3(positionDiff.normalized.x, 0, positionDiff.normalized.z);
-                impulseVector *= shieldKnockBackImpulse;
-                otherRigidbody.AddForce(impulseVector, ForceMode.Impulse);
+                var attackerImpulseVec = new Vector3(positionDiff.normalized.x, 0, positionDiff.normalized.z);
+                attackerImpulseVec *= shieldKnockbackImpulse;
+                var victimImpulseVec = new Vector3(-positionDiff.normalized.x, 0, -positionDiff.normalized.z);
+                victimImpulseVec *= shieldSelfKnockbackImpulse;
+
+                // Knockback attacker
+                if (otherRigidbody != null)
+                {
+                    otherRigidbody.AddForce(attackerImpulseVec, ForceMode.Impulse);
+                }
+
+                // Knockback victim
+                thisRigidbody.AddForce(victimImpulseVec, ForceMode.Impulse);
+
+                // Hit effect
+                if (shieldEffect != null)
+                {
+                    var hitPosition = shieldHitbox.transform.position;
+                    var hitRotation = shieldEffect.transform.rotation;
+                    Instantiate(shieldEffect, hitPosition, hitRotation);
+                }
             }
         }
 
@@ -245,7 +290,7 @@ namespace Player
                 float dot = Vector3.Dot(playerDirection, attackDirection);
                 if (dot < -0.25)
                 {
-                    //OnShieldCollisionEnter(attacker);
+                    OnShieldCollisionEnter(attacker);
                     return false;
                 }
             }
@@ -277,14 +322,16 @@ namespace Player
 
         public bool AttemptToAttack()
         {
+            // Ignore if already on last stage
+            if (currentAttackStage == attackStages) return false;
+
             if (Input.GetMouseButtonDown(0))
             {
                 var isAttacking = stateMachine.currentStateName == attackState.name;
                 var canAttack = !isAttacking || attackState.CanSwitchStages();
                 if (canAttack)
                 {
-                    var attackStage = isAttacking ? (attackState.stage + 1) : 1;
-                    attackState.stage = attackStage;
+                    if (timeLeftToAdvanceAttackStages > 0f) currentAttackStage++;
                     stateMachine.ChangeState(attackState);
                     return true;
                 }
