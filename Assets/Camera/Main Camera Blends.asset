@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Main Camera Blends
   m_EditorClassIdentifier: 
   m_CustomBlends:
-  - m_From: CM Primary
+  - m_From: '**ANY CAMERA**'
     m_To: CM HallBoss
     m_Blend:
       m_Style: 1

@@ -267,6 +267,11 @@ MonoBehaviour:
   interaction: {fileID: 8606398210402093924}
   itemHolder: {fileID: 4362242251662463765}
   item: {fileID: 0}
+  openEffect: {fileID: 6102059666096861076, guid: d2b8eb4e5abf78249a7c555315bf615d,
+    type: 3}
+  onOpen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &8606398209521449503
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -154,10 +154,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
-  health: 5
+  health: 0
   isVulnerable: 1
   healingPrefab: {fileID: 0}
-  hitPrefab: {fileID: 0}
+  hitPrefab: {fileID: 1826860097779723220, guid: 4349f47c17c00d64ab241b925d1b7104,
+    type: 3}
 --- !u!114 &895708310690542774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +175,7 @@ MonoBehaviour:
   thisAnimator: {fileID: 0}
   thisLife: {fileID: 0}
   thisCollider: {fileID: 0}
+  thisRigidbody: {fileID: 0}
   searchRadius: 10
   targetSearchInterval: 1
   ceaseFollowInterval: 4
@@ -184,7 +186,7 @@ MonoBehaviour:
   attackDuration: 2.5
   attackDamage: 1
   hurtDuration: 0.5
-  destroyIfFar: 30
+  destroyIfFar: 40
   knockoutEffect: {fileID: 7156241163619126912, guid: 2e759ecf0721ba640a9537985ab62d64,
     type: 3}
   currentStateName: 

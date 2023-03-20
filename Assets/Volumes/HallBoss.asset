@@ -68,6 +68,22 @@ MonoBehaviour:
   saturation:
     m_OverrideState: 1
     m_Value: -35
+--- !u!114 &-4034989467880499161
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.457
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +97,7 @@ MonoBehaviour:
   m_Name: HallBoss
   m_EditorClassIdentifier: 
   components:
+  - {fileID: -4034989467880499161}
   - {fileID: -8208389914984759316}
   - {fileID: 7893311012994206216}
   - {fileID: -5182281301494168894}
@@ -97,10 +114,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01700fd266d6914ababb731e09af2eb, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   mode:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 2
   gaussianStart:
     m_OverrideState: 1
     m_Value: 50
@@ -115,13 +132,13 @@ MonoBehaviour:
     m_Value: 0
   focusDistance:
     m_OverrideState: 1
-    m_Value: 2.33
+    m_Value: 9
   aperture:
     m_OverrideState: 1
-    m_Value: 21.1
+    m_Value: 4.5
   focalLength:
     m_OverrideState: 1
-    m_Value: 31
+    m_Value: 300
   bladeCount:
     m_OverrideState: 0
     m_Value: 5

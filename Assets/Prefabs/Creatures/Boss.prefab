@@ -726,8 +726,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7133210382547009622}
   - component: {fileID: 7186881318266643616}
-  - component: {fileID: 8595553644582428421}
   - component: {fileID: 6298681574401774235}
+  - component: {fileID: 8595553644582428421}
   - component: {fileID: 5331597879222552143}
   - component: {fileID: 1766280500008914}
   - component: {fileID: 3948062146197642162}
@@ -775,20 +775,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &8595553644582428421
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7127939216801993646}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2.532143
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.0589243, z: 0}
 --- !u!54 &6298681574401774235
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -805,6 +791,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 16
   m_CollisionDetection: 0
+--- !u!136 &8595553644582428421
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7127939216801993646}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.532143
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.0589243, z: 0}
 --- !u!195 &5331597879222552143
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -843,7 +843,8 @@ MonoBehaviour:
   health: 0
   isVulnerable: 1
   healingPrefab: {fileID: 0}
-  hitPrefab: {fileID: 0}
+  hitPrefab: {fileID: 1826860097779723220, guid: 4349f47c17c00d64ab241b925d1b7104,
+    type: 3}
 --- !u!114 &3948062146197642162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -876,8 +877,8 @@ MonoBehaviour:
   attackSuperMagicCount: 6
   attackSuperImpulse: 15
   distanceToRitual: 3.5
-  attackRitualDelay: 0.66
-  attackRitualDuration: 1.5
+  attackRitualDelay: 1.75
+  attackRitualDuration: 2.25
   hurtDuration: 0.5
   fireballPrefab: {fileID: 306655317168196088, guid: b720ebddd94845842813b58ac245cd52,
     type: 3}
