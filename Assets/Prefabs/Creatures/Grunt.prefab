@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b210a4571baf100458218ca20711c119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 15
   health: 0
   isVulnerable: 1
   healingPrefab: {fileID: 0}
@@ -249,7 +249,7 @@ MonoBehaviour:
   thisLife: {fileID: 0}
   thisCollider: {fileID: 0}
   thisRigidbody: {fileID: 0}
-  searchRadius: 5
+  searchRadius: 10
   targetSearchInterval: 1
   ceaseFollowInterval: 1
   distanceToAttack: 3
