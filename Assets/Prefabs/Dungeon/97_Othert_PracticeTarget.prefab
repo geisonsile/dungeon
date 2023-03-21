@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 2726341468981866029}
   - component: {fileID: 157940820425857767}
   - component: {fileID: 7191099180472763234}
-  - component: {fileID: 928689698698419843}
   - component: {fileID: 5129839281314450953}
+  - component: {fileID: 928689698698419843}
+  - component: {fileID: 383547101975939793}
   m_Layer: 7
   m_Name: 97_Othert_PracticeTarget
   m_TagString: Untagged
@@ -102,6 +103,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &5129839281314450953
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815480781262027570}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7706628, y: 1.9361637, z: 0.628963}
+  m_Center: {x: 0.007898543, y: 0.96153355, z: -0.22720203}
 --- !u!220 &928689698698419843
 LightProbeGroup:
   m_ObjectHideFlags: 0
@@ -120,16 +134,19 @@ LightProbeGroup:
   - {x: -1, y: -1, z: 1}
   - {x: -1, y: -1, z: -1}
   m_Dering: 1
---- !u!65 &5129839281314450953
-BoxCollider:
+--- !u!208 &383547101975939793
+NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1815480781262027570}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.7706628, y: 1.9361637, z: 0.628963}
-  m_Center: {x: 0.007898543, y: 0.96153355, z: -0.22720203}
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.99300003, y: 0.96800005, z: 0.61800003}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.012, y: 0.9620001, z: -0.38000003}
+  m_TimeToStationary: 0.5

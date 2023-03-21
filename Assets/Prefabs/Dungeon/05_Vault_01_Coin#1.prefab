@@ -126,6 +126,8 @@ GameObject:
   - component: {fileID: 8955455131676277955}
   - component: {fileID: 5469605717609313126}
   - component: {fileID: 7783071324823127980}
+  - component: {fileID: 7562028691169440481}
+  - component: {fileID: 504299204592460222}
   m_Layer: 0
   m_Name: 05_Vault_01_Coin#1
   m_TagString: Untagged
@@ -199,3 +201,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7562028691169440481
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8575973346061264505}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.35396272, y: 0.07056394, z: 0.35066843}
+  m_Center: {x: 0.007375948, y: 0.042904615, z: 0.010754995}
+--- !u!54 &504299204592460222
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8575973346061264505}
+  serializedVersion: 2
+  m_Mass: 0.5
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

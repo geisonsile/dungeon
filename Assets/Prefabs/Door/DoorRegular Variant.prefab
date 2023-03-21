@@ -70,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 4397162205553716605, guid: 1072aed2c3e18264a93296da78ada014,
         type: 3}
       propertyPath: m_Name
-      value: DoorRegular
+      value: DoorRegular Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7688973530235197066, guid: 1072aed2c3e18264a93296da78ada014,
         type: 3}
@@ -151,3 +151,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interaction: {fileID: 5833439224994442126}
   requiredKey: {fileID: 11400000, guid: 2a6b48b914878f04fb65cae9f0515e1f, type: 2}
+  openEffect: {fileID: 6723457859527944737, guid: e8a56f45bac6bb04cbdd648d8682c0a5,
+    type: 3}

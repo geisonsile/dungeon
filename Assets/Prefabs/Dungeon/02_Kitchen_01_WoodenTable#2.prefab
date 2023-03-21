@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 183298437266761293}
   - component: {fileID: 2697589917449163399}
   - component: {fileID: 6741111525769075126}
-  m_Layer: 0
+  - component: {fileID: 1790295987060707971}
+  m_Layer: 7
   m_Name: 02_Kitchen_01_WoodenTable#2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4498884702426641234}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -97,3 +98,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.6176472, y: 1.1682833, z: 1.766282}
   m_Center: {x: -0.0013327003, y: 0.5943641, z: -0.24381655}
+--- !u!208 &1790295987060707971
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4498884702426641234}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.8090001, y: 0.58400005, z: 0.883}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.001, y: 0.59400004, z: -0.24400002}
+  m_TimeToStationary: 0.5

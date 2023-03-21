@@ -5,6 +5,8 @@ public class Door : MonoBehaviour
 {
     public Interaction interaction;
     public Item requiredKey;
+    public GameObject openEffect;
+
     private bool isOpen;
     private Animator thisAnimator;
     
@@ -72,6 +74,12 @@ public class Door : MonoBehaviour
         if(isBossDoor)
         {
             GlobalEvents.Instance.InvokeBossDoorOpen(this, new BossDoorOpenArgs());
+        }
+
+        // Effect
+        if (openEffect != null)
+        {
+            Instantiate(openEffect, transform.position, openEffect.transform.rotation);
         }
     }
     private void CloseDoor()

@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4899853717909885005}
   - component: {fileID: 7213413890639897735}
   - component: {fileID: 4628196643993191527}
-  m_Layer: 0
+  - component: {fileID: 4356238932789176216}
+  m_Layer: 7
   m_Name: 04_Bedroom_01_Beed_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,10 +27,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9159140522573038930}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -97,3 +98,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.4751093, y: 0.836198, z: 2.4105368}
   m_Center: {x: 0.0041988194, y: 0.3882001, z: 0.016106725}
+--- !u!208 &4356238932789176216
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9159140522573038930}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.73800004, y: 0.418, z: 1.205}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.004, y: 0.388, z: 0.016}
+  m_TimeToStationary: 0.5
