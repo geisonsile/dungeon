@@ -3,11 +3,19 @@
 Projeto pessoal de um jogo estilo roguelike. Esse jogo é o resultado final do curso Formação Unity 3D Game Developer da plataforma DIO (https://www.dio.me/)
 
 # Game
-**Jogue agora em** https://play.unity.com/p/webgl-builds-325894/edit
+**Jogue agora em** https://play.unity.com/p/webgl-builds-325894
 
-### Assets individuais
+# Screenshots
 
-O Jogo contém os seguintes asssets da Asset Store da Unity (https://assetstore.unity.com):
+<p align="middle">
+  <p>
+    <img src="Assets/Images/TitleScreen.jpg" width="80%" />
+  </p>
+</p>
+
+## Assets do jogo
+
+Assets utlizados da Asset Store da Unity (https://assetstore.unity.com):
 
 - [**RPG Tiny Hero Duo PBR Polyart** _por Dungeon Mason_](https://assetstore.unity.com/packages/3d/characters/humanoids/rpg-tiny-hero-duo-pbr-polyart-225148)
 - [**RPG Monster Duo PBR Polyart** _por Dungeon Mason_](https://assetstore.unity.com/packages/3d/characters/creatures/rpg-monster-duo-pbr-polyart-157762)
@@ -22,11 +30,3 @@ O Jogo contém os seguintes asssets da Asset Store da Unity (https://assetstore.
 - [**Sprite Packs** _por Kenney_](https://www.kenney.nl/)
 - Músicas por _Kevin MacLeod_: [incompetech.com](https://www.incompetech.com)
 - Efeitos sonoros com licença pública obtidos em [freesound.org](https://freesound.org)
-
-# Screenshots
-
-<p align="middle">
-  <p>
-    <img src="Assets/Images/TitleScreen.jpg" width="80%" />
-  </p>
-</p>
