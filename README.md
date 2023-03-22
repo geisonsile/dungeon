@@ -5,7 +5,7 @@ Projeto pessoal de um jogo estilo roguelike. Esse jogo é o resultado final do c
 **Alguns recursos da Unity estudados:**
 * Cinemachine com a mudança de câmera em alguns lugares do mapa do jogo
 * Iluminação do cenário e de elementos do jogo
-* Configurações de pós produção para ambientar melhor alguns cenários do jogo. 
+* Configurações de pós produção para ambientar melhor alguns cenários do jogo.<br>
   Exemplo: passar sensação de calor ou frio em partes do mapa
 * Mecânicas de ataque e defesa do player com os inimigos
 * Interação com objetos
