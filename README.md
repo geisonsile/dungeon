@@ -9,7 +9,10 @@ Projeto pessoal de um jogo estilo roguelike. Esse jogo é o resultado final do c
 
 <p align="middle">
   <p>
-    <img src="Assets/Images/TitleScreen.jpg" width="80%" />
+    <img src="Assets/Images/TitleScreen.jpg" width="49%" />
+	<img src="Assets/Images/room1.jpg" width="49%" />
+	<img src="Assets/Images/room2.jpg" width="49%" />
+	<img src="Assets/Images/map.jpg" width="49%" />
   </p>
 </p>
 
