@@ -1,6 +1,14 @@
 # Dungeon
 
-Projeto pessoal de um jogo estilo roguelike. Esse jogo é o resultado final do curso Formação Unity 3D Game Developer da plataforma DIO (https://www.dio.me/)
+Projeto pessoal de um jogo estilo roguelike. Esse jogo é o resultado final do curso Formação Unity 3D Game Developer da plataforma DIO (https://www.dio.me)
+
+**Alguns recursos da Unity estudados:**
+* Cinemachine com a mudança de câmera em alguns lugares do mapa do jogo
+* Iluminação do cenário de elementos do jogo
+* Configurações de pós produção para ambientar melhor alguns cenários do jogo. Exemplo: passar sensação de calor ou frio em partes do mapa
+* Mecânicas de ataque e defesa do player com os inimigos
+* Interação com objetos
+* Inteligência artificial para os inimigos atacarem o player
 
 # Game
 **Jogue agora em** https://play.unity.com/p/webgl-builds-325894
