@@ -12,7 +12,7 @@ Projeto pessoal de um jogo estilo roguelike. Esse jogo é o resultado final do c
 * Inteligência artificial para os inimigos atacarem o player
 
 # Game
-**Jogue agora em** https://play.unity.com/p/webgl-builds-325894
+**Jogue agora em** https://geisonleite.itch.io/dungeon
 
 # Screenshots
 
