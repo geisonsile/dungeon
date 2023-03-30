@@ -27,7 +27,7 @@ Projeto pessoal de um jogo estilo roguelike. Esse jogo é o resultado final do c
 
 ## Assets do jogo
 
-Assets utlizados da Asset Store da Unity (https://assetstore.unity.com):
+O Jogo contém os seguintes itens da Asset Store da Unity:
 
 - [**RPG Tiny Hero Duo PBR Polyart** _por Dungeon Mason_](https://assetstore.unity.com/packages/3d/characters/humanoids/rpg-tiny-hero-duo-pbr-polyart-225148)
 - [**RPG Monster Duo PBR Polyart** _por Dungeon Mason_](https://assetstore.unity.com/packages/3d/characters/creatures/rpg-monster-duo-pbr-polyart-157762)
